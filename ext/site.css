@@ -1,0 +1,525 @@
+html {box-sizing: border-box; font-size: 16px;}
+*, *:before, *:after { box-sizing: inherit; }
+body, p, ol, ul { margin: 0; padding: 0; font-weight: normal; }
+img { max-width: 100%; height: auto; }
+* { transition: all 200ms; }
+
+:root {
+  --system_ui: system-ui, sans-serif;
+  --transitional: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+  --old_style: 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif;
+  --humanist: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+  --geometric_humanist: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro, sans-serif;
+  --classical_humanist: Optima, Candara, 'Noto Sans', source-sans-pro, sans-serif;
+  --neo_grotesque: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  --monospace_slab_serif: 'Nimbus Mono PS', 'Courier New', monospace;
+  --monospace_code: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+  --industrial: Bahnschrift, 'DIN Alternate', 'Franklin Gothic Medium', 'Nimbus Sans Narrow', sans-serif-condensed, sans-serif;
+  --rounded_sans: ui-rounded, 'Hiragino Maru Gothic ProN', Quicksand, Comfortaa, Manjari, 'Arial Rounded MT', 'Arial Rounded MT Bold', Calibri, source-sans-pro, sans-serif;
+  --slab_serif: Rockwell, 'Rockwell Nova', 'Roboto Slab', 'DejaVu Serif', 'Sitka Small', serif;
+  --antique: Superclarendon, 'Bookman Old Style', 'URW Bookman', 'URW Bookman L', 'Georgia Pro', Georgia, serif;
+  --didone: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+  --handwritten: 'Segoe Print', 'Bradley Hand', Chilanka, TSCu_Comic, casual, cursive;
+}
+
+body {
+  font-family: var(--system_ui);
+  font-size: 1.05rem;
+  line-height: 1.45rem;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+header, div.content {
+    padding: 1rem 2rem;
+}
+header {
+    background-color: teal;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 1rem;
+}
+img.logo {
+    display: block;
+    width: 90%;
+}
+a.olink span:after {
+  content: "";
+  width: 1.5rem;
+  height: 1.5rem;
+  background-image: url(olink.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin: 0 0 -6px 0.3rem;
+  opacity: 0.5;
+}
+.half {
+  opacity: 0.5;
+}
+
+span.pc_hits b {
+  content: " ";
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url(arrow-circle-up-right-svgrepo-com.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin: 0 0.2rem -2px 0.5rem;
+  opacity: 0.3;
+}
+
+a {
+  text-decoration: none;
+  color: teal;
+}
+
+h2 small.brukerinfo {
+  float: right;
+  clear: right;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+ul.list, ul.list li, ul.list ul, ul.list li li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.list li ul {
+  display: grid;
+  grid-gap: 1rem 0;
+  grid-template-columns: 15rem 15rem 15rem 4rem 1fr 8rem;
+}
+ul.list.machines li ul {
+  grid-template-columns: 7rem 8rem 4rem 1fr 3rem 4rem 1fr 6rem 10rem 10rem 5rem 20rem;
+}
+
+ul.list li ul li {
+  padding: 0.4rem 1rem;
+  border-bottom: solid 1px #ccc;
+}
+header img.logo {
+  max-height: 100px;
+  justify-self: start;
+}
+header > h1 {
+  color: #fff;
+  justify-self: end;
+  align-self: end;
+}
+ul.list li ul.headers {
+  list-style: none;
+  background: #456;
+  color: #fff;
+}
+ul.list li img {
+  max-height: 1.4rem;
+}
+ul.list a {
+  color: teal;
+  font-weight: bold;
+  text-decoration: none;
+}
+@media screen and (max-width: 1280px) {
+  ul.list li ul, ul.list.machines li ul {
+      display: block;
+      width: 100%;
+  }
+  ul.list li ul, ul.list.machines li ul li {
+      display: inline-block;
+      border: none;
+      padding: 0.2rem 0.5rem 0 0;
+  }
+  ul.list li ul, ul.list.machines li ul li:first-of-type {
+      display: inline-block;
+  }
+  ul.list.machines li ul li:first-of-type {
+      float: right;
+  }
+  ul.list li ul, ul.list.machines li ul li:nth-of-type(2) {
+      display: block;
+      float: left;
+  }
+  ul.list li ul, ul.list.machines li ul li:nth-of-type(3) {
+      display: block;
+  }
+  ul.list li ul {
+      border-bottom: solid 1px #ddd;
+      padding-bottom: 0.5rem;
+  }
+  ul.list li ul.headers {
+      border-bottom: none;
+      padding-bottom: inherit;
+      width: 100%;
+  }
+  ul.list li ul.headers li {
+      padding: 0.2rem 0.2rem 0.3rem 1rem;
+      color: #fffa;
+  }
+  ul.list li ul.headers li:first-of-type {
+      display: inline-block;
+      color: #fff;
+      float: none;
+  }
+  ul.list li ul.headers li:nth-of-type(2),ul.list li ul.headers li:nth-of-type(3) {
+      display: inline-block;
+      float: none;
+  }
+}
+
+
+
+ul.sitelinks {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  gap: 0.3rem;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+ul.sitelinks li a {
+  text-decoration: none;
+  padding: 0.4rem 1rem;
+  display: block;
+  border-radius: 3px;
+  background: #eee;
+  color: #444;
+}
+ul.sitelinks li.active a {
+  background: teal;
+  color: #fff;
+}
+form {
+  margin: 1rem 0;
+  border-top: solid 1px #ddd;
+  padding: 1rem 0;
+}
+form {
+  display: grid;
+  grid-template-areas: "forml submitb formr";
+  grid-template-columns: 1fr 1fr 20rem;
+  grid-gap: 1rem;
+}
+form.nogrid {
+  display: block;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+form .formelements:first-of-type {
+  grid-area: forml;
+}
+form .formelements:last-of-type {
+  grid-area: formr;
+}
+form .submitgroup {
+  grid-area: submitb;
+}
+form .form-group {
+ display: grid;
+ max-width: 40rem;
+ grid-template-columns: 10rem 2fr;
+ grid-template-rows: auto 1fr;
+ grid-gap: 0 1rem; 
+ padding: 0 0 0.5rem 0;
+}
+.icon img {
+  max-height: 1.2rem;
+  margin: 0 0.5rem -4px 0;
+}
+form input, form select, form .locked, form textarea {
+  padding: 0.2rem 1rem;
+  border-width: 2px;
+  font-size: 1rem;
+  border-radius: 3px;
+}
+form textarea {
+  min-height: 10rem;
+}
+form select {
+  border-color: #9ab;
+}
+
+form p.locked {
+  display: block;
+  border: solid 1px #ddd;
+}
+form input[type="submit"], a.submit, a.cancel {
+  background: teal;
+  text-decoration: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  line-height: 1.1rem;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0;
+}
+form input[type="submit"] {
+  display: inline-block;
+  
+}
+form input[type="file"] {
+  padding: 0;
+  margin-top: 0;
+}
+a.submit {
+  background: darkslategrey;
+}
+
+p.error {
+  margin: 1rem 0;
+  display: block;
+  background: #fff0f0;
+  border: solid 2px #dfd0d0;
+  padding: 1rem 2rem;
+  border-radius: 3px;
+}
+span.floatright {
+  font-size: 1rem;
+  font-weight: normal;
+  padding: 0;
+  display: block;
+  float: right;
+}
+span.floatright a {
+  color: teal;
+  text-decoration: none;
+}
+.machines ul,.machines li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.machines ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem,1fr));
+  grid-gap: 0rem 1rem;
+}
+.machines ul li a.image {
+  display: block;
+  background-size: cover;
+  padding-top: 30%;
+}
+.machines ul li a h3 {
+  display: grid;
+  padding: 1rem 1.35rem;
+  background: #fffd;
+  color: #000;
+}
+.machines ul li a h3 span, .machines ul li a h3 small {
+  display: block;
+}
+.machines ul li a h3 span {
+  padding-bottom: 0.5rem; 
+}
+.machines ul li a h3 small {
+  font-weight: normal;
+  font-size: 85%;
+}
+.machine {
+  display: grid;
+  grid-template-columns: 30rem 1fr;
+  grid-gap: 0 4rem;
+  grid-template-areas: "bilde tittel" "bilde data";
+  grid-template-rows: auto 1fr;
+}
+.machine a {
+  grid-area: bilde;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top left;
+  padding-top: 90%;
+}
+
+.machine h3 {
+  grid-area: tittel;
+  padding: 1rem 0 0.5rem 0;
+  margin: 0;
+}
+.machine .data {
+  grid-area: data;
+}
+.machine .data dl {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  grid-gap: 0.2rem 2rem;
+}
+p.floatright {
+  display: block;
+  padding: 0 0 1rem 0;
+  text-align: right;
+}
+ul.menu,ul.menu li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+ul.menu li.last {
+  padding: 0.5rem 0 0 0;
+}
+ul.menu li.active a {
+  font-weight: bold;
+  color: #222;
+}
+#frontpage {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  grid-gap: 4rem;
+}
+.pc_hits b {
+  display: inline-block;
+}
+
+@media screen and (max-width: 1280px) {
+  form {
+      display: block;
+  }
+  form .form-group {
+     max-width: 100%;
+  }
+  span.floatright {
+      padding: 0.5rem 0 0 0;
+      float: none;
+  }
+}
+
+#single_enhet {
+  display: grid;
+  grid-template-columns: 30rem 1fr;
+  grid-gap: 4rem;
+}
+.sidebar {
+  padding-right: 2rem;
+  border-right: solid 1px #ccc;
+}
+ul.list li ul.headers.input {
+  background: #eee;
+  color: #222;
+}
+ul.list li ul.headers.input input, ul.list li ul.headers.input select{
+  background: #fff;
+  color: #222;
+  border: solid 1px #ccc;
+  width: 100%;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0;
+}
+
+ul.menytagg, ul.menytagg li {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.menytagg li {
+  display: block;
+  padding: 0.3rem 1rem 0.4rem 1rem;
+  margin: 0 0 0.5rem 0;
+  background: #e8e8ee;
+  border-radius: 3px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+ul.menytagg li.active {
+  background: teal;
+  color: white;
+}
+.selectbox {
+  border: solid 1px #ddd;
+  padding: 0.3rem;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem,1fr));
+  grid-gap: 0.2rem;
+
+}
+.selectbox input.changedvariable {
+  border: solid 2px orangered;
+  background: #ff800020;
+}
+small.floatright {
+  font-weight: normal;
+  float: right;
+  font-size: 1.2rem;
+}
+
+footer {
+  padding: 0.5rem 1rem 1rem 1rem;
+  text-align: center;
+  border-top: solid 1px #ddd;
+  color: #2228;
+  font-size: 0.9rem;
+}
+
+#sbuttons {
+  position: fixed;
+  bottom: 0;
+  background: #eee;
+  left: 0;
+  width: 100vw;
+  padding: 2rem;
+  margin: 0;
+  overflow: hidden;
+  box-shadow: 0 -5px 25px #0008;
+}
+#sbuttons a.submit, #sbuttons a.cancel {
+  padding: 0.3rem 1rem;
+  position: relative;
+}
+section {padding-bottom: 4rem;}
+.taggbutton {
+  white-space: nowrap;
+}
+ul.menytagg {
+  flex-wrap: wrap;
+}
+.content ul.menytagg li.taggbutton {
+  margin: 0 0 0.1rem 0;
+  font-size: 85%;
+  padding: 0.2rem 0.6rem;
+}
+.content ul.menytagg {
+  gap: 0.1rem;
+} 
+
+ul.menytagg {
+  width: 100%;
+  overflow: auto;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  margin-bottom: 0.5rem;
+}
+ul.machines li ul li {
+  font-size: 90%;
+}
+
+.machines ul li a.image {
+  padding-top: 70%;
+}
+.machines ul li a h3 {
+  background: #000a;
+  color: #fff;
+}
+
+ul.list.machines li.machs.status0 {
+  background: none;
+}
+ul.list li.machs.status1  ul {
+  background: #f0f0ff;
+}
+ul.list li.machs.status2  ul {
+  background: #f0fff0;
+}
+ul.list li.machs.status3  ul {
+  background: #f0f0ff;
+}
+ul.list li.machs.status4  ul, ul.list li.machs.status5  ul {
+  background: #ffe0e0;
+  opacity: 0.6;
+}

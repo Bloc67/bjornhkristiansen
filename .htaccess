@@ -1,0 +1,5 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^ext - [L]
+RewriteRule ^(.*)$ index.php?id=$1 [QSA]
+
