@@ -24,9 +24,6 @@ function is_logged_in() {
             $_SESSION['lastlogin'] = time();
 //            echo '<pre>' , print_r($_SESSION) , '</pre>';
 //            die();
-            // update last login column
-            $sql = "UPDATE users SET lastlogin = '". $_SESSION['lastlogin'] . "' WHERE id = '". $_SESSION['id']."'"; 
-            $mysqli->query($sql); 
             return true;
         }
     }

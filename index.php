@@ -2,7 +2,7 @@
 
 
 $path_parts = pathinfo(__FILE__);
-$uri = 'http://localhost/bjornhkristiansen.com';
+$uri = 'http://localhost/bjornhkristiansen';
 
 error_reporting(E_ALL);
 

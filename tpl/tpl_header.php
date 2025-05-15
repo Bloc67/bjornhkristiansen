@@ -20,17 +20,9 @@ echo '
 </head>
 <body>
 	<header>
-		<a href="' , SITEURL , '"><img class="logo" src="' , SITEURL , '/ext/logo_white.svg" alt="" /></a>
+		<a href="' , SITEURL , '">Bjorn H Kristiansen</a>
 		<h1>' , !empty($tpl_params['h1']) ? $tpl_params['h1'] : '' ,'</h1>
 	</header>
 	<div class="content">';
-
-if(!empty($tpl_params['notice'])) {
-	echo '
-		<p class="notice">
-			Din bruker er ikke godkjent ennå, innhold er begrenset. 
-			Om du vil kan du <a href="' , SITEURL , '/logout">logge ut</a> nå og sjekke på nytt senere.
-		</p>';
-}
 
 ?>
