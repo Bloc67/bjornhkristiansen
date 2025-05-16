@@ -90,10 +90,10 @@ ul.list, ul.list li, ul.list ul, ul.list li li {
 ul.list li ul {
   display: grid;
   grid-gap: 1rem 0;
-  grid-template-columns: 15rem 15rem 15rem 4rem 1fr 8rem;
+  grid-template-columns: 15rem 1fr 15rem 14rem 15rem;
 }
 ul.list.machines li ul {
-  grid-template-columns: 7rem 8rem 4rem 1fr 3rem 4rem 1fr 6rem 10rem 10rem 5rem 20rem;
+/*  grid-template-columns: 7rem 8rem 4rem 1fr 3rem 4rem 1fr 6rem 10rem 10rem 5rem 20rem;*/
 }
 
 ul.list li ul li {
@@ -104,10 +104,16 @@ header img.logo {
   max-height: 100px;
   justify-self: start;
 }
-header > h1 {
+header > span{
   color: #fff;
+  display: block;
   justify-self: end;
-  align-self: end;
+  align-self: 50%;
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+header > h1 a {
+  color: #fff;
 }
 ul.list li ul.headers {
   list-style: none;

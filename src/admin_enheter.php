@@ -16,7 +16,7 @@ else {
 $title_err = $serial_err = $pctype_err = $status_err = $healthstate_err = $healthtext_err = $file_err = '';
 
 // are we in edit mode?
-if($param1 == 'edit' && is_numeric($param2) && $param2>0 && $param2<100000) {
+if($param1 == 'edit' && is_numeric($param2)) {
     // fetch the user
     if(file_exists(SITEDIR.'/json/'.$param2.'.json')) {
         $row = json_decode(file_get_contents(SITEDIR.'/json/'.$param2.'.json'),true);
@@ -41,14 +41,6 @@ if($param1 == 'edit' && is_numeric($param2) && $param2>0 && $param2<100000) {
         // get some choices!!
         $tpl_params['taggchoices'] = array();
         $tpl_params['typechoices'] = array();
-/*
-        $sql = "SELECT tagg,type FROM machines WHERE 1 ORDER BY id_machine DESC"; 
-        $result = $mysqli->query($sql); 
-        while($row = mysqli_fetch_assoc($result)){ 
-            $tpl_params['taggchoices'][$row['tagg']] = $row['tagg'];
-            $tpl_params['typechoices'][$row['type']] = $row['type'];
-        } 
-*/
         require_once(SITEDIR . "/tpl/tpl_header.php");
         require_once(SITEDIR . "/tpl/tpl_admin_enhet_redigere.php");
         require_once(SITEDIR . "/tpl/tpl_footer.php");
@@ -64,142 +56,8 @@ if($param1 == 'edit' && is_numeric($param2) && $param2>0 && $param2<100000) {
 }
 // deleting?
 elseif($param1 == 'slette' && is_numeric($param2) && $param2>0 && $param2<100000) {
-    unset(SITEDIR.'/json/'.$param2.'.json', json_encode($tpl_params['machine']));
-    $sql = "DELETE FROM machines WHERE id_machine = ". $param2; 
-    $result = $mysqli->query($sql); 
+    unlink(SITEDIR.'/json/'.$param2.'.json');
     header("Location: " . SITEURL . "/admin/enheter");
-}
-// salg
-elseif($param1 == 'aktive') {
-    $tpl_params['machines'] = array();
-    $tpl_params['tagger'] = array();
-    $tpl_params['status'] = $status;
-    $tpl_params['healthstate'] = $healthstate;
-
-    $sql = "SELECT * FROM machines WHERE status=2 ORDER BY id_machine DESC"; 
-    $result = $mysqli->query($sql); 
-    while($row = mysqli_fetch_assoc($result)){ 
-        $tpl_params['machines'][$row['id_machine']] = $row;
-        if(!isset($tpl_params['tagger'][$row['tagg']])) {
-            $tpl_params['tagger'][$row['tagg']] = 0;
-        }
-        $tpl_params['tagger'][$row['tagg']]++;
-    } 
-
-    $tpl_params['h1'] = 'Aktive Enheter';
-    $tpl_params['title'] = ' - Admin';
-    $tpl_params['admin_top_content'] = '
-    <a href="' . SITEURL . '/admin/enheter/aktive"><b>Salg</b></a> |
-    <a href="' . SITEURL . '/admin/enheter/lager">Lager</a> |
-    <a href="' . SITEURL . '/admin/enheter/donert">Donert</a> |
-    <a href="' . SITEURL . '/admin/enheter/ute">Arkiverte</a> |
-    <a href="' . SITEURL . '/admin/enheter">Alle</a> |
-    <a href="' . SITEURL . '/admin/enheter/utskrift">Utskriftmodus</a>
-    ';
-
-    require_once(SITEDIR . "/tpl/tpl_header.php");
-    require_once(SITEDIR . "/tpl/tpl_home_admin.php");
-    require_once(SITEDIR . "/tpl/tpl_footer.php");
-
-}
-// lager
-elseif($param1 == 'lager') {
-    $tpl_params['machines'] = array();
-    $tpl_params['tagger'] = array();
-    $tpl_params['status'] = $status;
-    $tpl_params['healthstate'] = $healthstate;
-
-    $sql = "SELECT * FROM machines WHERE status IN(0,1,2) ORDER BY id_machine DESC"; 
-    $result = $mysqli->query($sql); 
-    while($row = mysqli_fetch_assoc($result)){ 
-        $tpl_params['machines'][$row['id_machine']] = $row;
-        if(!isset($tpl_params['tagger'][$row['tagg']])) {
-            $tpl_params['tagger'][$row['tagg']] = 0;
-        }
-        $tpl_params['tagger'][$row['tagg']]++;
-    } 
-
-    $tpl_params['h1'] = 'Aktive Enheter';
-    $tpl_params['title'] = ' - Admin';
-    $tpl_params['admin_top_content'] = '
-    <a href="' . SITEURL . '/admin/enheter/aktive">Salg</a> |
-    <a href="' . SITEURL . '/admin/enheter/lager"><b>Lager</b></a> |
-    <a href="' . SITEURL . '/admin/enheter/donert">Donert</a> |
-    <a href="' . SITEURL . '/admin/enheter/ute">Arkiverte</a> |
-    <a href="' . SITEURL . '/admin/enheter">Alle</a> |
-    <a href="' . SITEURL . '/admin/enheter/utskrift">Utskriftmodus</a>
-    ';
-
-    require_once(SITEDIR . "/tpl/tpl_header.php");
-    require_once(SITEDIR . "/tpl/tpl_home_admin.php");
-    require_once(SITEDIR . "/tpl/tpl_footer.php");
-
-}
-// lager
-elseif($param1 == 'donert') {
-    $tpl_params['machines'] = array();
-    $tpl_params['tagger'] = array();
-    $tpl_params['status'] = $status;
-    $tpl_params['healthstate'] = $healthstate;
-
-    $sql = "SELECT * FROM machines WHERE status IN(4,5) ORDER BY id_machine DESC"; 
-    $result = $mysqli->query($sql); 
-    while($row = mysqli_fetch_assoc($result)){ 
-        $tpl_params['machines'][$row['id_machine']] = $row;
-        if(!isset($tpl_params['tagger'][$row['tagg']])) {
-            $tpl_params['tagger'][$row['tagg']] = 0;
-        }
-        $tpl_params['tagger'][$row['tagg']]++;
-    } 
-
-    $tpl_params['h1'] = 'Donerte Enheter';
-    $tpl_params['title'] = ' - Admin';
-    $tpl_params['admin_top_content'] = '
-    <a href="' . SITEURL . '/admin/enheter/aktive">Salg</a> |
-    <a href="' . SITEURL . '/admin/enheter/lager">Lager</a> |
-    <a href="' . SITEURL . '/admin/enheter/donert"><b>Donert</b></a> |
-    <a href="' . SITEURL . '/admin/enheter/ute">Arkiverte</a> |
-    <a href="' . SITEURL . '/admin/enheter">Alle</a> |
-    <a href="' . SITEURL . '/admin/enheter/utskrift">Utskriftmodus</a>
-    ';
-
-    require_once(SITEDIR . "/tpl/tpl_header.php");
-    require_once(SITEDIR . "/tpl/tpl_home_admin.php");
-    require_once(SITEDIR . "/tpl/tpl_footer.php");
-
-}
-// ute
-elseif($param1 == 'ute') {
-    $tpl_params['machines'] = array();
-    $tpl_params['tagger'] = array();
-    $tpl_params['status'] = $status;
-    $tpl_params['healthstate'] = $healthstate;
-
-    $sql = "SELECT * FROM machines WHERE status IN(3,4,5) ORDER BY id_machine DESC"; 
-    $result = $mysqli->query($sql); 
-    while($row = mysqli_fetch_assoc($result)){ 
-        $tpl_params['machines'][$row['id_machine']] = $row;
-        if(!isset($tpl_params['tagger'][$row['tagg']])) {
-            $tpl_params['tagger'][$row['tagg']] = 0;
-        }
-        $tpl_params['tagger'][$row['tagg']]++;
-    } 
-
-    $tpl_params['h1'] = 'Arkiverte Enheter';
-    $tpl_params['title'] = ' - Admin';
-    $tpl_params['admin_top_content'] = '
-    <a href="' . SITEURL . '/admin/enheter/aktive">Salg</a> |
-    <a href="' . SITEURL . '/admin/enheter/lager">Lager</a> |
-    <a href="' . SITEURL . '/admin/enheter/donert">Donert</a> |
-    <a href="' . SITEURL . '/admin/enheter/ute"><b>Arkiverte</b></a> |
-    <a href="' . SITEURL . '/admin/enheter">Alle</a> |
-    <a href="' . SITEURL . '/admin/enheter/utskrift">Utskriftmodus</a>
-    ';
-
-    require_once(SITEDIR . "/tpl/tpl_header.php");
-    require_once(SITEDIR . "/tpl/tpl_home_admin.php");
-    require_once(SITEDIR . "/tpl/tpl_footer.php");
-
 }
 // show the machines as a list
 else {
@@ -208,7 +66,7 @@ else {
     $tpl_params['status'] = $status;
     $tpl_params['healthstate'] = $healthstate;
 
-    foreach (new DirectoryIterator(SITEDIR.'/json') as $tfile) 
+    foreach (new DirectoryIterator(SITEDIR.'/json/') as $tfile) 
     {
       if ($tfile->isDot()) continue;
       $u = $tfile->getFilename();
@@ -217,20 +75,14 @@ else {
       }
       // a file or a dir
       if($tfile->isFile()) {
-        $row = json_decode(file_get_contents($tfile),true);
-        $tpl_params['machines'][] = $row;
+        $row = json_decode(file_get_contents(SITEDIR.'/json/'.$tfile),true);
+        $tpl_params['machines'][$row['id']] = $row;
       }
     }    
 
     $tpl_params['h1'] = 'Enheter';
     $tpl_params['title'] = ' - Admin';
     $tpl_params['admin_top_content'] = '
-    <a href="' . SITEURL . '/admin/enheter/aktive">Salg</a> |
-    <a href="' . SITEURL . '/admin/enheter/lager">Lager</a> |
-    <a href="' . SITEURL . '/admin/enheter/donert">Donert</a> |
-    <a href="' . SITEURL . '/admin/enheter/ute">Arkiverte</a> |
-    <a href="' . SITEURL . '/admin/enheter"><b>Alle</b></a> |
-    <a href="' . SITEURL . '/admin/enheter/utskrift">Utskriftmodus</a>
     ';
 
     require_once(SITEDIR . "/tpl/tpl_header.php");

@@ -5,12 +5,12 @@ if (!defined('APG'))
 	header("location: ". SITEURL);
 
 $status= array(
-    '0' => 'Registrert',
-    '1' => 'Sjekket',
-    '2' => 'Aktiv',
+    '0' => 'Aktiv',
+    '1' => 'Ferdig',
+    '2' => 'Ferniss',
     '3' => 'Solgt',
-    '4' => 'Donert',
-    '5' => 'InternPC',
+    '4' => 'Kassert',
+    '5' => 'Gitt bort',
 );
 $os = array(
     '0' => '',

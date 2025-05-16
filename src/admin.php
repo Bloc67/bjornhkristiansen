@@ -20,15 +20,9 @@ else {
 if(file_exists(SITEDIR.'/src/admin_'.$subaction.'.php')) {
     // give control to source file
     require_once(SITEDIR.'/src/admin_'.$subaction.'.php');
-
-    // Close connection
-    $mysqli->close();
     exit;
 }
 else {
-
-    // Close connection
-    $mysqli->close();
     exit;
 }
 
