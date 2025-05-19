@@ -8,24 +8,10 @@ function is_logged_in() {
 
     global $mysqli, $settings;
     
-    // fallback
-    if(empty($settings['timeout'])) {
-        $settings['timeout'] = 3600; 
-    }
     if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-        // check if its timed out.(having an open window without clicking for one hour)
-        if(time() - $_SESSION['lastlogin'] > $settings['timeout']) {
-            // logout and request to login in again
-            header("Location: ". SITEURL . "/logout/auto");
-            exit;
-        }
-        else {
-            // update last login
-            $_SESSION['lastlogin'] = time();
-//            echo '<pre>' , print_r($_SESSION) , '</pre>';
-//            die();
-            return true;
-        }
+        // update last login
+        $_SESSION['lastlogin'] = time();
+        return true;
     }
     else {
         return false;
@@ -48,7 +34,7 @@ function render_form($target, $elements, $submit_text, $extra_text = '') {
             $e['value'] = $tmp;
         }
         echo '
-            <div class="form-group">
+            <div class="form-group' , !empty($e['fifty']) ? ' fifty' : '' , '">
                 <label>' , !empty($e['label']) ? $e['label'] : '' , '</label>';
         
         if($e['type'] == 'text') {

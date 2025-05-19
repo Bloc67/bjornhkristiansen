@@ -466,13 +466,14 @@ footer {
 #sbuttons {
   position: fixed;
   bottom: 0;
-  background: #eee;
+  background: #fff;
+  border-top: solid 1px #ccc;
   left: 0;
   width: 100vw;
   padding: 2rem;
   margin: 0;
   overflow: hidden;
-  box-shadow: 0 -5px 25px #0008;
+
 }
 #sbuttons a.submit, #sbuttons a.cancel {
   padding: 0.3rem 1rem;

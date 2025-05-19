@@ -36,8 +36,13 @@ foreach($tpl_params['machines'] as $id => $b) {
     echo '
                             <a  onclick="return confirm(\'Er du sikker på du vil slette enhet ' . $b['id'] . ' (' . $b['tittel'] . '?\');" href="' . SITEURL . '/admin/enheter/slette/'. $b['id'] .'"><img class="half" src="' . SITEURL . '/ext/delete.svg" alt="" /></a>';
     echo '                                    
-                    ', $b['id'] , '</li>
-                    <li><a href="' . SITEURL . '/admin/enheter/edit/' . $id . '">' , $b['tittel'] , '</a></li>
+                    <a href="' . SITEURL . '/admin/enheter/edit/' . $id . '" title="', $b['id'] , '">' , date("Y-m-d H:i",$id), '</a></li>
+                    <li>
+                        <a href="' . SITEURL . '/admin/enheter/edit/' . $id . '">
+                            <img class="thumb" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />
+                            <span>' , $b['tittel'] , '</span>
+                        </a>
+                    </li>
                     <li>' , !empty($b['tagg']) ? strtolower($b['tagg']) : '' , '</li>
                     <li>' , !empty($b['status']) ? $tpl_params['status'][$b['status']] : '' , '</li>
                     <li>' , date("Y-m-d H:i",$id), '</li>

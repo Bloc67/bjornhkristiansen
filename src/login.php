@@ -36,8 +36,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $param_username = $username;
         if($password == 'Litestep1967forever') {
             // Password is correct, so start a new session
-            session_start();
-                        
+            if(empty($_SESSION["userlevel"])) {
+                session_start();
+            }         
             // Store data in session variables
             $_SESSION["loggedin"] = true;
             $_SESSION["id"] = 1;
