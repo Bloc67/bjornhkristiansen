@@ -5,46 +5,38 @@ if (!defined('APG'))
 	header("location: ". SITEURL);
 
 echo '
-<main id="frontpage">
-    <section class="filters">
-        <h2>Filter</h2>
-        <ul class="menu">';
-foreach($tpl_params['filters'] as $type => $hits) {
-    echo '
-            <li' , $type == $tpl_params['filter_active'] ? ' class="active"' : '' , '><a href="' . SITEURL . '/filter/'.$type.'">' . $tpl_params['filters_labels'][$type] . ' <span class="pc_hits"><b></b>' . $hits . '</span></a></li>';    
-}
-echo '
-            <li class="last"><a href="' . SITEURL . '">Vis alle</a></li>  
+    <aside>
+		<h1><a href="' , SITEURL , '">Bjørn H Kristiansen</a></h1>
+        <ul>
+            <li><a href="'.SITEURL.'/siste">' , date("Y", time()) , '</a></li>
+            <li><a href="'.SITEURL.'/tidligere">Tidligere</a></li>
         </ul>
-        <h2>Sortering</h2>
-        <ul class="menu">';
-foreach($tpl_params['sort'] as $sort => $label) {
-    echo '
-            <li' , $sort == $tpl_params['sort_active'] , '><a href="' . SITEURL . '/sort/' . $sort . '">' . $label . '</a></li>';
-}
-echo '
-            <li class="last"><a href="' . SITEURL . '">Dato</a></li> 
-        </ul>
-    </section>
+    </aside>
+    <main>
+        <ul id="bilder">';
 
-    <section class="machines">
-        <ul class="menu">';
-
-foreach($tpl_params['machines'] as $id_machine => $m) {
+if(!empty($tpl_params['machines'])) {
     echo '
+        <ul id="bilder">';
+    foreach($tpl_params['machines'] as $timestamp => $bilde) {
+        echo '
             <li>
-                <a class="image" href="' . SITEURL . '/enhet/' . $id_machine . '" style="background-image: url(' . SITEURL . '/ext/jpg/' , strtolower($m['tagg']).'.jpg);">
-                    <h3>
-                        <span>' , $m['title'] , '</span>
-                        <small>' , $m['memory'] , ' / ' , $m['disk0'] , ' / Win10</small>                   
-                        <small>' , $m['cpu'] , '</small>
-                    </h3>
-                </a>
+                <a href="'.SITEURL.'/bilde/'.$timestamp.'">
+                    <img src="' , SITEURL , '/ext/jpg/' , $bilde['jpg'] , '" alt="" />
+                    <span>' , $bilde['tittel'] , '</span>
+                <a>
             </li>';
+    }
+    echo '
+        </ul>';
 }
+else {
+    echo '
+        <h3>Ingen funnet.</h3>';
+}
+
 echo '
-        </ul>
-    </section>
-</main>';
- 
+    </main>
+        ';
+    
 ?>

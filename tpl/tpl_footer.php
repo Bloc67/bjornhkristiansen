@@ -6,7 +6,7 @@ if (!defined('APG'))
 
 echo '
 	</div>
-	<footer>&copy; 2024 B.H.Kristiansen</footer>
+	<footer>&copy; 2024-'.date("Y",time()).' BHKristiansen</footer>
 <body>
 </html>';
 

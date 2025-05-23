@@ -62,69 +62,56 @@ else {
         }        
     }    
     else {
-        // just guest frontpage
-        $tpl_params['machinemenu'] = array();
-        $tpl_params['filters'] = array();
-        $tpl_params['sort'] = array('memory' => 'Minne','disk0' => 'Diskstørrelse');
-        $sort = 'id_machine';
-        $sort_dir = 'DESC';
-        $filter = '';
-
-        // check if we got filters or sorting
-        if($action=='filter' && !empty($subaction)) {
-            //filtering out $subaction
-            $what = filter_letter($subaction, true);
-            $filter = ' AND tagg ="' . $subaction . '"';
-            $tpl_params['filter_active'] = $subaction;
-            $tpl_params['active_path'] = '/filter/'.$subaction;
-            // do we have a sort?
-            if($param1 == 'sort' && !empty($param2)) {
-                // filter it
-                $what = filter_letter($param2, true);
-                $sort = $param2;
-                $tpl_params['sort_active'] = $param2;
-                $tpl_params['active_path'] = '/filter/'.$subaction.'/sort/'.$param2;
+        $year = date("Y",time());
+        // siste
+        if(!empty($action)) {
+            if($action == 'siste') {
+                $filter = 'siste';
             }
-        }
-        // check if we got filters or sorting
-        elseif($action=='sort' && !empty($subaction)) {
-            //filtering out $subaction
-            $what = filter_letter($subaction, true);
-            $sort = $subaction;
-            $sort_dir = 'ASC';
-            $tpl_params['sort_active'] = $subaction;
-            $tpl_params['active_path'] = '/sort/'.$subaction;
-        }
-        // get the records
-        
-
-        $sql = "SELECT * FROM machines WHERE status = '2' AND (healthstate = '1' OR healthstate = '2')" . $filter . " ORDER BY " . $sort . " ".$sort_dir; 
-        $result = $mysqli->query($sql); 
-        while($row = mysqli_fetch_assoc($result)){ 
-            $tpl_params['machines'][$row['id_machine']] = $row;
-        } 
-        $sql = "SELECT * FROM machines WHERE status = '2' AND (healthstate = '1' OR healthstate = '2') ORDER BY id_machine DESC"; 
-        $result = $mysqli->query($sql); 
-        $tpl_params['filters_labels'] = array();
-        while($row = mysqli_fetch_assoc($result)){ 
-            $tpl_params['machinemenu'][$row['id_machine']] = $row;
-            if(!isset($tpl_params['filters'][$row['tagg']])) {
-                $tpl_params['filters'][$row['tagg']] = 1;
+            elseif($action == 'tidligere') {
+                $filter = 'tidligere';
             }
             else {
-                $tpl_params['filters'][$row['tagg']]++;
+                $filter = 'siste';
             }
-            $tpl_params['filters_labels'][$row['tagg']] = $row['type'];
-        } 
-        $tpl_params['h1'] = 'Velkommen';
-        require_once(SITEDIR . "/tpl/tpl_header.php");
+        }
+        else {
+               $filter = 'siste';
+        }
+
+        // just guest frontpage
+        foreach (new DirectoryIterator(SITEDIR.'/json/') as $tfile) {
+            if ($tfile->isDot()) continue;
+            $u = $tfile->getFilename();
+            if (substr($u,strlen($u)-5,5) != '.json') {
+                continue;
+            }
+            // a file or a dir
+            if($tfile->isFile()) {
+                $row = json_decode(file_get_contents(SITEDIR.'/json/'.$tfile),true);
+                // filter
+                if($filter == 'siste') {
+                    if($row['aar'] == $year) {
+                        $tpl_params['machines'][$row['id']] = $row;
+                    }
+                }
+                elseif($filter == 'tidligere') {
+                    if($row['aar'] != $year) {
+                        $tpl_params['machines'][$row['id']] = $row;
+                    }
+                }
+            }
+        }    
+
+        $tpl_params['h1'] = 'Enheter';
+        $tpl_params['title'] = ' - Admin';
+        $tpl_params['admin_top_content'] = '
+        ';
+
+        require_once(SITEDIR . "/tpl/tpl_header_guest.php");
         require_once(SITEDIR . "/tpl/tpl_home_guest.php");
         require_once(SITEDIR . "/tpl/tpl_footer.php");
     }
-
-    // Close connection
-    $mysqli->close();
-
     exit;
 }
 
