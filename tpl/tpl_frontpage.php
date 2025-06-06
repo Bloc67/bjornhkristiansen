@@ -19,7 +19,8 @@ if(!empty($tpl_params['machines'])) {
     echo '
         <ul id="bilder">';
     foreach($tpl_params['machines'] as $timestamp => $bilde) {
-        echo '
+        if(!empty($bilde['jpg']))
+           echo '
             <li>
                 <a href="'.SITEURL.'/bilde/'.$timestamp.'">
                     <img src="' , SITEURL , '/ext/jpg/' , $bilde['jpg'] , '" alt="" />

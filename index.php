@@ -89,6 +89,8 @@ else {
             // a file or a dir
             if($tfile->isFile()) {
                 $row = json_decode(file_get_contents(SITEDIR.'/json/'.$tfile),true);
+                $row['aar'] = !empty($row['aar']) ? $row['aar'] : '0';
+                $row['jpg'] = !empty($row['jpg']) ? $row['jpg'] : '';
                 // filter
                 if($filter == 'siste') {
                     if($row['aar'] == $year) {

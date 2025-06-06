@@ -23,8 +23,11 @@ img { max-width: 100%; height: auto; }
 }
 
 body {
-  font-family: var(--humanist);
-  font-size: 1.05rem;
+  font-family: "Syne", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
   line-height: 1.45rem;
   padding: 0;
   margin: 0;
@@ -34,7 +37,7 @@ header, div.content {
     padding: 1rem 2rem;
 }
 a {
-    color: teal;
+    color: rgb(0, 72, 72);
     text-decoration: none;
 }
 aside ul, main ul#bilder,aside ul li, main ul#bilder li {
