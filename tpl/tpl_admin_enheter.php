@@ -39,7 +39,7 @@ foreach($tpl_params['machines'] as $id => $b) {
                     <a href="' . SITEURL . '/admin/enheter/edit/' . $id . '" title="', $b['id'] , '">' , date("Y-m-d H:i",$id), '</a></li>
                     <li>
                         <a href="' . SITEURL . '/admin/enheter/edit/' . $id . '">
-                            <img class="thumb" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />
+                            ' , !empty($b['jpg']) ? '<img class="thumb" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />' : '' , '
                             <span>' , $b['tittel'] , '</span>
                         </a>
                     </li>
