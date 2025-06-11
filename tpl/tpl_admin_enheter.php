@@ -8,82 +8,24 @@ echo '
     <form class="nogrid" action="', SITEURL , '/admin/enheter/filtering" method="post" enctype="multipart/form-data">
     <section>
         <h2>Enheter ' , !empty($tpl_params['admin_top_content']) ? '<span class="floatright">'.$tpl_params['admin_top_content'].'</span>' : '' , ' </h2>
-         <ul class="list machines">
-            <li>
-                <ul class="headers">
-                    <li>ID</li>
-                    <li>Tittel</li>
-                    <li>Tagg</li>
-                    <li>Status</li>
-                    <li>Dato</li>
-                </ul>
-            </li>
-            <li>
-                <ul class="headers input">
-                    <li> </li>
-                    <li><input type="text" class="sinput" id="tittel" /></li>
-                    <li><input type="text" class="sinput" id="tagg" /> </li>
-                    <li><input type="text" class="sinput" id="status" /></li> 
-                    <li> </li>
-                </ul>
-            </li>';
+         <ul class="art">';
 
 foreach($tpl_params['machines'] as $id => $b) {
     echo '
             <li class="machs status' , !empty($b['status']) ? $b['status'] : '' , '">
-                <ul>
-                    <li class="id_machine q-' , !empty($b['tagg']) ? $b['tagg'] : '' , '-q">';
-    echo '
-                            <a  onclick="return confirm(\'Er du sikker på du vil slette enhet ' . $b['id'] . ' (' . $b['tittel'] . '?\');" href="' . SITEURL . '/admin/enheter/slette/'. $b['id'] .'"><img class="half" src="' . SITEURL . '/ext/delete.svg" alt="" /></a>';
-    echo '                                    
-                    <a href="' . SITEURL . '/admin/enheter/edit/' . $id . '" title="', $b['id'] , '">' , date("Y-m-d H:i",$id), '</a></li>
-                    <li>
-                        <a href="' . SITEURL . '/admin/enheter/edit/' . $id . '">
-                            ' , !empty($b['jpg']) ? '<img class="thumb" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />' : '' , '
-                            <span>' , $b['tittel'] , '</span>
-                        </a>
-                    </li>
-                    <li>' , !empty($b['tagg']) ? strtolower($b['tagg']) : '' , '</li>
-                    <li>' , !empty($b['status']) ? $tpl_params['status'][$b['status']] : '' , '</li>
-                    <li>' , date("Y-m-d H:i",$id), '</li>
-                </ul>
+                ' , !empty($b['jpg']) ? '<a href="' . SITEURL . '/admin/enheter/edit/' . $id . '"><img class="thumb" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" /></a>' : '' , '
+                <dl>
+                    <dt>Navn</dt><dd><a href="' . SITEURL . '/admin/enheter/edit/' . $id . '">' , $b['tittel'] , '</a></dd>
+                    <dt>Slette</dt><dd><a onclick="return confirm(\'Er du sikker på du vil slette enhet ' . $b['id'] . ' (' . $b['tittel'] . '?\');" href="' . SITEURL . '/admin/enheter/slette/'. $b['id'] .'">bilde</a></dd>
+                    <dt>Tagger</dt><dd>' , !empty($b['tagg']) ? strtolower($b['tagg']) : '' , '</dd>
+                    <dt>Status</dt><dd>' , !empty($b['status']) ? $tpl_params['status'][$b['status']] : '' , '</dd>
+                    <dt>Dato</dt><dd>' , date("Y-m-d H:i",$id), '</dd>
+                </dl>
             </li>';
 }
 echo '
         </ul>
     </section>
-            <p id="sbuttons" style="padding-top: 1rem; clear: both;">
-                <input type="submit" class="btn btn-primary" value="Lagre"> 
-            </p>
-        </form>
-    <script>
-        $(document).ready(function() {
-            $("#printall").click(function() {
-                var checkBoxes = $(".checks");
-                checkBoxes.prop("checked", $(this).prop("checked"));
-            });                 
-        });    
-    </script>
-<script>
-$(document).ready(function(){
-  $(".sinput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("li.machs").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-$(document).ready(function(){
-  $(".taggbutton").on("click", function() {
-    $(".taggbutton").removeClass(\'active\');
-    var value = $(this).attr(\'data-target\').toLowerCase();
-    $("li.machs").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-    $(this).addClass(\'active\');
-  });
-});
-</script>
         ';
     
 ?>

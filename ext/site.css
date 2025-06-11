@@ -530,3 +530,20 @@ ul.list li.machs.status4  ul, ul.list li.machs.status5  ul {
   background: #ffe0e0;
   opacity: 0.6;
 }
+ul.art {
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+ul.art li img {
+    max-height: 20rem;
+}
+ul.art dl {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}

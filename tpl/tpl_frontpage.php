@@ -5,39 +5,25 @@ if (!defined('APG'))
 	header("location: ". SITEURL);
 
 echo '
-    <aside>
-		<h1><a href="' , SITEURL , '">Bjørn H Kristiansen</a></h1>
-        <ul>
-            <li><a href="'.SITEURL.'/siste">' , date("Y", time()) , '</a></li>
-            <li><a href="'.SITEURL.'/tidligere">Tidligere</a></li>
-        </ul>
-    </aside>
-    <main>
-        <ul id="bilder">';
+    <section>
+        <h2>Enheter </h2>
+         <ul class="art">';
 
-if(!empty($tpl_params['machines'])) {
+foreach($tpl_params['machines'] as $id => $b) {
     echo '
-        <ul id="bilder">';
-    foreach($tpl_params['machines'] as $timestamp => $bilde) {
-        if(!empty($bilde['jpg']))
-           echo '
-            <li>
-                <a href="'.SITEURL.'/bilde/'.$timestamp.'">
-                    <img src="' , SITEURL , '/ext/jpg/' , $bilde['jpg'] , '" alt="" />
-                    <span>' , $bilde['tittel'] , '</span>
-                <a>
+            <li class="machs status' , !empty($b['status']) ? $b['status'] : '' , '">
+                ' , !empty($b['jpg']) ? '<a href="' . SITEURL . '/admin/enheter/edit/' . $id . '"><img class="thumb" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" /></a>' : '' , '
+                <dl>
+                    <dt>Navn</dt><dd><a href="' . SITEURL . '/admin/enheter/edit/' . $id . '">' , $b['tittel'] , '</a></dd>
+                    <dt>Slette</dt><dd><a onclick="return confirm(\'Er du sikker på du vil slette enhet ' . $b['id'] . ' (' . $b['tittel'] . '?\');" href="' . SITEURL . '/admin/enheter/slette/'. $b['id'] .'">bilde</a></dd>
+                    <dt>Tagger</dt><dd>' , !empty($b['tagg']) ? strtolower($b['tagg']) : '' , '</dd>
+                    <dt>Status</dt><dd>' , !empty($b['status']) ? $tpl_params['status'][$b['status']] : '' , '</dd>
+                    <dt>Dato</dt><dd>' , date("Y-m-d H:i",$id), '</dd>
+                </dl>
             </li>';
-    }
-    echo '
-        </ul>';
 }
-else {
-    echo '
-        <h3>Ingen funnet.</h3>';
-}
-
 echo '
-    </main>
+        </ul>
         ';
     
 ?>

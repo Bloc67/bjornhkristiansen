@@ -20,7 +20,6 @@ echo '
 </head>
 <body>
 	<header>
-		
 		<h1><a href="' , SITEURL , '">Bjorn H Kristiansen</a></h1>
 		<span>' , !empty($tpl_params['h1']) ? $tpl_params['h1'] : '' ,'</span>
 	</header>
