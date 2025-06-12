@@ -15,6 +15,10 @@ else {
 
 $title_err = $serial_err = $pctype_err = $status_err = $healthstate_err = $healthtext_err = $file_err = '';
 
+$taggfiler = hentjsonfiler('tagg');
+$datofiler = hentjsonfiler('dato');
+$statusfiler = hentjsonfiler('status');
+
 // are we in edit mode?
 if($param1 == 'edit' && is_numeric($param2)) {
     // fetch the user
@@ -40,6 +44,15 @@ if($param1 == 'edit' && is_numeric($param2)) {
             }
             // write the new file
             file_put_contents(SITEDIR.'/json/'.$param2.'.json', json_encode($tpl_params['machine']));
+
+            // update tags
+            // get the tags for this
+            $taggfiler = oppdaterejsonfiler('tagg',$taggfiler);
+            // update dato
+            $datofiler = oppdaterejsonfiler('dato',$datofiler,'aar');
+            // update status
+            $statusfiler = oppdaterejsonfiler('status',$statusfiler);
+
         }
         // get some choices!!
         $tpl_params['taggchoices'] = array();
@@ -82,6 +95,8 @@ else {
         $tpl_params['machines'][$row['id']] = $row;
       }
     }    
+    
+    krsort($tpl_params['machines']);
 
     $tpl_params['h1'] = 'Enheter';
     $tpl_params['title'] = ' - Admin';

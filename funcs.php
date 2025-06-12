@@ -238,4 +238,59 @@ function timestamp2date($t) {
     return date("r", $t);
 }
 
+function hentjsonfiler($where) {
+    global $param2;
+    $taggfiler = array();
+    foreach (new DirectoryIterator(SITEDIR.'/'.$where.'/') as $tfile) {
+        if ($tfile->isDot()) continue;
+        $u = $tfile->getFilename();
+        $us = substr($u,0,(strlen($u)-5)); 
+        if (substr($u,strlen($u)-5,5) != '.json') {
+            continue;
+        }
+        // a file or a dir
+        if($tfile->isFile()) {
+            $taggfiler[$us] = json_decode(file_get_contents(SITEDIR.'/' . $where . '/'.$tfile),true);
+        }
+    }
+    return $taggfiler;
+}
+
+function oppdaterejsonfiler($where,$taggfiler, $post = '') {
+    global $param2;
+    // update tags
+    // get the tags for this
+    if(!empty($post)) {
+        $tags = explode(",", $_POST[$post]); 
+    }
+    else {
+        $tags = explode(",", $_POST[$where]); 
+    }
+    foreach($tags as $tid => $t) {
+        if(empty($t))
+            continue;
+        if(isset($taggfiler[$t])) {
+            $taggfiler[$t][$param2] = 1;
+            file_put_contents(SITEDIR.'/'.$where.'/'.$t.'.json', json_encode($taggfiler[$t]));
+        }
+        else {
+            $taggfiler[$t] = array(
+                $param2 => 1
+            );
+            file_put_contents(SITEDIR.'/'.$where.'/'.$t.'.json', json_encode($taggfiler[$t]));
+        }
+    }
+    // update the other tags
+    foreach($taggfiler as $dtag => $dtagdata) {
+        $temp = json_decode(file_get_contents(SITEDIR.'/'.$where.'/'.$dtag.'.json'),true);
+        foreach($temp as $tid => $tdata) {
+            if($tid==$param2 && !in_array($dtag, $tags)) {
+                $taggfiler[$dtag][$tid] = 0;
+                file_put_contents(SITEDIR.'/'.$where.'/'.$dtag.'.json', json_encode($taggfiler[$dtag]));
+            }
+        }
+    }
+    return $taggfiler;
+}
+
 ?>

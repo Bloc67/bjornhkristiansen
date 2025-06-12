@@ -63,22 +63,6 @@ else {
     }    
     else {
         $year = date("Y",time());
-        // siste
-        if(!empty($action)) {
-            if($action == 'siste') {
-                $filter = 'siste';
-            }
-            elseif($action == 'tidligere') {
-                $filter = 'tidligere';
-            }
-            else {
-                $filter = 'siste';
-            }
-        }
-        else {
-               $filter = 'siste';
-        }
-
         // just guest frontpage
         foreach (new DirectoryIterator(SITEDIR.'/json/') as $tfile) {
             if ($tfile->isDot()) continue;
@@ -91,20 +75,11 @@ else {
                 $row = json_decode(file_get_contents(SITEDIR.'/json/'.$tfile),true);
                 $row['aar'] = !empty($row['aar']) ? $row['aar'] : '0';
                 $row['jpg'] = !empty($row['jpg']) ? $row['jpg'] : '';
-                // filter
-                if($filter == 'siste') {
-                    if($row['aar'] == $year) {
-                        $tpl_params['machines'][$row['id']] = $row;
-                    }
-                }
-                elseif($filter == 'tidligere') {
-                    if($row['aar'] != $year) {
-                        $tpl_params['machines'][$row['id']] = $row;
-                    }
-                }
+                if(!empty($row['jpg']))
+                    $tpl_params['machines'][$row['id']] = $row;
             }
         }    
-
+        krsort($tpl_params['machines']);
         $tpl_params['h1'] = 'Enheter';
         $tpl_params['title'] = ' - Admin';
         $tpl_params['admin_top_content'] = '

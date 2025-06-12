@@ -32,7 +32,7 @@ else {
         'mnd' => array('type' => 'select', 'label' => 'Måned', 'err' => $status_err , 'value' => $tpl_params['machine']['mnd'], 
             'options' => $mnd, 'fifty' => true,
         ),
-        'jpgimport' => array('type' => 'file', 'label' => 'Bilde', 'err' => $file_err, 'accept' => '.jpg','var' => $tpl_params['machine']['jpg'], 'is_img' => 1),
+        'jpgimport' => array('type' => 'file', 'label' => 'Bilde', 'err' => $file_err, 'accept' => '.jpg','var' => (!empty($tpl_params['machine']['jpg']) ? $tpl_params['machine']['jpg'] : ''), 'is_img' => 1),
     );
     $submit_text = 'Lagre';
     $extra_text = '

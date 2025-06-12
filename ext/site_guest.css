@@ -70,3 +70,22 @@ h1 {
   margin: 0;
   padding: 1rem 0;
 }
+ul.menylinker {
+    display: flex;
+    color: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 1rem;
+}
+ul.menylinker li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+ul.menylinker li a {
+    color: white;
+    font-weight: normal;
+    display: block;
+    font-size: 1.3rem;
+}

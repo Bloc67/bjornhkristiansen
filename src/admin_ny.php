@@ -13,7 +13,7 @@ if(is_logged_in() && !empty($_SESSION["userlevel"]) && $_SESSION["userlevel"] ==
     $data = array(
         'id' => $now,
         'tittel' => '-no name-',
-        'tagg' => 'olje',
+        'tagg' => '',
         'status' => 0,
     );
     file_put_contents(SITEDIR.'/json/'.$now.'.json', json_encode($data));

@@ -21,7 +21,13 @@ echo '
 <body>
 	<header>
 		<h1><a href="' , SITEURL , '">BHKristiansen</a></h1>
-		<span>' , !empty($tpl_params['h1']) ? $tpl_params['h1'] : '' ,'</span>
+		<span>
+			<ul class="menylinker">
+				<li><a href="' . SITEURL . '"' , $action=='side' && $subaction=='' ? ' class="active"' : '' , '>Galleri</a></li>
+				<li><a href="' . SITEURL . '/side/om"' , $action=='side' && $subaction=='om' ? ' class="active"' : '' , '>Om</a></li>
+				<li><a href="' . SITEURL . '/side/kontakt"' , $action=='side' && $subaction=='kontakt' ? ' class="active"' : '' , '>Kontakt</a></li>
+			</ul>
+		</span>
 	</header>
 	<div class="content">';
 

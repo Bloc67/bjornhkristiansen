@@ -6,7 +6,7 @@ if (!defined('APG'))
 
 echo '
     <section>
-        <h2>Enheter </h2>
+        <h2>Siste fra Galleriet</h2>
          <ul class="art">';
 
 foreach($tpl_params['machines'] as $id => $b) {
@@ -15,10 +15,7 @@ foreach($tpl_params['machines'] as $id => $b) {
                 ' , !empty($b['jpg']) ? '<a href="' . SITEURL . '/admin/enheter/edit/' . $id . '"><img class="thumb" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" /></a>' : '' , '
                 <dl>
                     <dt>Navn</dt><dd><a href="' . SITEURL . '/admin/enheter/edit/' . $id . '">' , $b['tittel'] , '</a></dd>
-                    <dt>Slette</dt><dd><a onclick="return confirm(\'Er du sikker på du vil slette enhet ' . $b['id'] . ' (' . $b['tittel'] . '?\');" href="' . SITEURL . '/admin/enheter/slette/'. $b['id'] .'">bilde</a></dd>
                     <dt>Tagger</dt><dd>' , !empty($b['tagg']) ? strtolower($b['tagg']) : '' , '</dd>
-                    <dt>Status</dt><dd>' , !empty($b['status']) ? $tpl_params['status'][$b['status']] : '' , '</dd>
-                    <dt>Dato</dt><dd>' , date("Y-m-d H:i",$id), '</dd>
                 </dl>
             </li>';
 }
