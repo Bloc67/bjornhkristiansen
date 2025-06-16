@@ -15,7 +15,12 @@ foreach($tpl_params['machines'] as $id => $b) {
                 ' , !empty($b['jpg']) ? '<a href="' . SITEURL . '/admin/enheter/edit/' . $id . '"><img class="thumb" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" /></a>' : '' , '
                 <dl>
                     <dt>Navn</dt><dd><a href="' . SITEURL . '/admin/enheter/edit/' . $id . '">' , $b['tittel'] , '</a></dd>
-                    <dt>Tagger</dt><dd>' , !empty($b['tagg']) ? strtolower($b['tagg']) : '' , '</dd>
+                    <dt>Tagger</dt><dd>';
+    foreach($b['tagg'] as $tag) {
+        echo '<a href="' . SITEURL . '/tagg/' . $tag . '">'.$tag.'</a>';
+    }
+                    
+    echo '</dd>
                 </dl>
             </li>';
 }

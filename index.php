@@ -63,31 +63,62 @@ else {
     }    
     else {
         $year = date("Y",time());
-        // just guest frontpage
-        foreach (new DirectoryIterator(SITEDIR.'/json/') as $tfile) {
-            if ($tfile->isDot()) continue;
-            $u = $tfile->getFilename();
-            if (substr($u,strlen($u)-5,5) != '.json') {
-                continue;
-            }
-            // a file or a dir
-            if($tfile->isFile()) {
-                $row = json_decode(file_get_contents(SITEDIR.'/json/'.$tfile),true);
-                $row['aar'] = !empty($row['aar']) ? $row['aar'] : '0';
-                $row['jpg'] = !empty($row['jpg']) ? $row['jpg'] : '';
-                if(!empty($row['jpg']))
-                    $tpl_params['machines'][$row['id']] = $row;
-            }
-        }    
-        krsort($tpl_params['machines']);
-        $tpl_params['h1'] = 'Enheter';
-        $tpl_params['title'] = ' - Admin';
-        $tpl_params['admin_top_content'] = '
-        ';
+        if($action=='tagg' && file_exists(SITEDIR.'/tagg/'.$subaction.'.json')){
+            $json = json_decode(file_get_contents(SITEDIR.'/tagg/'.$subaction.'.json'),true);
+            foreach ($json as $name => $is_active) {
+                if (empty($is_active)) {
+                  continue;
+                }
+                // a file or a dir
+                if(file_exists(SITEDIR.'/json/'.$name.'.json')) {
+                    $row = json_decode(file_get_contents(SITEDIR.'/json/'.$name.'.json'),true);
+                    $row['aar'] = !empty($row['aar']) ? $row['aar'] : '0';
+                    $row['jpg'] = !empty($row['jpg']) ? $row['jpg'] : '';
+                    if(!empty($row['jpg']))
+                        $tpl_params['machines'][$row['id']] = $row;
 
-        require_once(SITEDIR . "/tpl/tpl_header_guest.php");
-        require_once(SITEDIR . "/tpl/tpl_home_guest.php");
-        require_once(SITEDIR . "/tpl/tpl_footer.php");
+                    $tpl_params['machines'][$row['id']]['tagg'] = explode(",",$tpl_params['machines'][$row['id']]['tagg']);   
+                }
+            }    
+            krsort($tpl_params['machines']);
+            $tpl_params['h1'] = 'Bilder tagget med '. $subaction;
+            $tpl_params['title'] = '';
+            $tpl_params['admin_top_content'] = '
+            ';
+            require_once(SITEDIR . "/tpl/tpl_header_guest.php");
+            require_once(SITEDIR . "/tpl/tpl_home_guest.php");
+            require_once(SITEDIR . "/tpl/tpl_footer.php");
+
+        }
+        else {
+            // just guest frontpage
+            foreach (new DirectoryIterator(SITEDIR.'/json/') as $tfile) {
+                if ($tfile->isDot()) continue;
+                $u = $tfile->getFilename();
+                if (substr($u,strlen($u)-5,5) != '.json') {
+                    continue;
+                }
+                // a file or a dir
+                if($tfile->isFile()) {
+                    $row = json_decode(file_get_contents(SITEDIR.'/json/'.$tfile),true);
+                    $row['aar'] = !empty($row['aar']) ? $row['aar'] : '0';
+                    $row['jpg'] = !empty($row['jpg']) ? $row['jpg'] : '';
+                    if(!empty($row['jpg']))
+                        $tpl_params['machines'][$row['id']] = $row;
+                    $tpl_params['machines'][$row['id']]['tagg'] = explode(",",$tpl_params['machines'][$row['id']]['tagg']);   
+                }
+            }    
+            krsort($tpl_params['machines']);
+            $tpl_params['h1'] = 'Enheter';
+            $tpl_params['title'] = ' - Admin';
+            $tpl_params['admin_top_content'] = '
+            ';
+
+            require_once(SITEDIR . "/tpl/tpl_header_guest.php");
+            require_once(SITEDIR . "/tpl/tpl_home_guest.php");
+            require_once(SITEDIR . "/tpl/tpl_footer.php");
+
+        }
     }
     exit;
 }
