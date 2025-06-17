@@ -6,26 +6,46 @@ if (!defined('APG'))
 
 echo '
     <section>
-        <h2>Siste fra Galleriet</h2>
-         <ul class="art">';
+        <h2>' , $tpl_params['title'] ,'</h2>
+         <ul class="art" id="artlist">';
 
 foreach($tpl_params['machines'] as $id => $b) {
-    echo '
+    if(!empty($b['tittel'])) {
+        echo '
             <li class="machs status' , !empty($b['status']) ? $b['status'] : '' , '">
-                ' , !empty($b['jpg']) ? '<a href="' . SITEURL . '/admin/enheter/edit/' . $id . '"><img class="thumb" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" /></a>' : '' , '
+                ' , !empty($b['jpg']) ? '<img class="thumb" data-target="#b'.$id.'" src="' . SITEURL . '/ext/jpg'. (file_exists(SITEDIR.'/ext/jpg_thumb/'.$b['jpg']) ? '_thumb' : '') . '/'.$b['jpg'].'" alt="" />
+                <img id="b'.$id.'" class="full" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />' : '' , '
                 <dl>
-                    <dt>Navn</dt><dd><a href="' . SITEURL . '/admin/enheter/edit/' . $id . '">' , $b['tittel'] , '</a></dd>
+                    <dt>Tittel</dt><dd>' , $b['tittel'] , '</dd>
                     <dt>Tagger</dt><dd>';
-    foreach($b['tagg'] as $tag) {
-        echo '<a href="' . SITEURL . '/tagg/' . $tag . '">'.$tag.'</a>';
-    }
+        foreach($b['tagg'] as $tag) {
+            echo '<a href="' . SITEURL . '/tagg/' . $tag . '">'.$tag.'</a>';
+        }
                     
-    echo '</dd>
+        echo '</dd>
                 </dl>
             </li>';
+
+    }
 }
 echo '
         </ul>
+    </section>
+        <script>            
+          $(document).ready(function(){
+            $("img.thumb").on("click", function() {
+              var value = $(this).attr(\'data-target\');
+              $(value).addClass("showit");
+              $("#artlist").addClass("showit");
+            });
+          });
+          $(document).ready(function(){
+            $("img.full").on("click", function() {
+              $(this).removeClass("showit");
+              $("#artlist").removeClass("showit");
+            });
+          });
+        </script>
         ';
     
 ?>

@@ -82,7 +82,7 @@ else {
             }    
             krsort($tpl_params['machines']);
             $tpl_params['h1'] = 'Bilder tagget med '. $subaction;
-            $tpl_params['title'] = '';
+            $tpl_params['title'] = 'Bilder tagget med "'. $subaction.'"';
             $tpl_params['admin_top_content'] = '
             ';
             require_once(SITEDIR . "/tpl/tpl_header_guest.php");
@@ -105,12 +105,14 @@ else {
                     $row['jpg'] = !empty($row['jpg']) ? $row['jpg'] : '';
                     if(!empty($row['jpg']))
                         $tpl_params['machines'][$row['id']] = $row;
-                    $tpl_params['machines'][$row['id']]['tagg'] = explode(",",$tpl_params['machines'][$row['id']]['tagg']);   
+                    else
+                        $tpl_params['machines'][$row['id']] = array();
+                    $tpl_params['machines'][$row['id']]['tagg'] = !empty($tpl_params['machines'][$row['id']]['tagg']) ? explode(",",$tpl_params['machines'][$row['id']]['tagg']) : array();   
                 }
             }    
             krsort($tpl_params['machines']);
             $tpl_params['h1'] = 'Enheter';
-            $tpl_params['title'] = ' - Admin';
+            $tpl_params['title'] = 'Siste fra Galleriet';
             $tpl_params['admin_top_content'] = '
             ';
 
