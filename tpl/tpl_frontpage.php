@@ -7,24 +7,21 @@ if (!defined('APG'))
 echo '
     <section>
         <h2>' , $tpl_params['title'] ,'</h2>
-         <ul class="art" id="artlist">';
+        <div class="mm-columns" id="artlist">';
 
 foreach($tpl_params['machines'] as $id => $b) {
     if(!empty($b['tittel'])) {
         echo '
-            <li class="machs status' , !empty($b['status']) ? $b['status'] : '' , '">
-                ' , !empty($b['jpg']) ? '<img class="thumb" data-target="#b'.$id.'" src="' . SITEURL . '/ext/jpg'. (file_exists(SITEDIR.'/ext/jpg_thumb/'.$b['jpg']) ? '_thumb' : '') . '/'.$b['jpg'].'" alt="" />
+        <div class="mm-columns__item">
+                ' , !empty($b['jpg']) ? '<img class="mm-columns__img thumb" data-target="#b'.$id.'" src="' . SITEURL . '/ext/jpg'. (file_exists(SITEDIR.'/ext/jpg_thumb/'.$b['jpg']) ? '_thumb' : '') . '/'.$b['jpg'].'" alt="" />
                 <img id="b'.$id.'" class="full" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />' : '' , '
-                <dl>
-                    <dt>Tittel</dt><dd>' , $b['tittel'] , '</dd>
-                    <dt>Tagger</dt><dd>';
+                <span class="imgspan"><b>' , $b['tittel'] , '</b> ';
         foreach($b['tagg'] as $tag) {
             echo '<a href="' . SITEURL . '/tagg/' . $tag . '">'.$tag.'</a>';
         }
                     
-        echo '</dd>
-                </dl>
-            </li>';
+        echo '</span>
+        </div>';
 
     }
 }
