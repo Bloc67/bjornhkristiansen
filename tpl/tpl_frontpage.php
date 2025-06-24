@@ -7,15 +7,16 @@ if (!defined('APG'))
 echo '
     <section>
         <h2>' , $tpl_params['title'] ,'</h2>
-        <div class="mm-columns" id="artlist">';
+        <ul id="works">';
 
 foreach($tpl_params['machines'] as $id => $b) {
     if(!empty($b['tittel'])) {
         echo '
-        <div class="mm-columns__item">
-                ' , !empty($b['jpg']) ? '<img class="mm-columns__img thumb" data-target="#b'.$id.'" src="' . SITEURL . '/ext/jpg'. (file_exists(SITEDIR.'/ext/jpg_thumb/'.$b['jpg']) ? '_thumb' : '') . '/'.$b['jpg'].'" alt="" />
-                <img id="b'.$id.'" class="full" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />' : '' , '
-                <span class="imgspan"><b>' , $b['tittel'] , '</b> ';
+          <li>
+            ' , !empty($b['jpg']) ? '<span class="thumb" data-target="#b'.$id.'" style="background: url(' . SITEURL . '/ext/jpg'. (file_exists(SITEDIR.'/ext/jpg_thumb/'.$b['jpg']) ? '_thumb' : '') . '/'.$b['jpg'].');">
+              
+            <img id="b'.$id.'" class="full" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />' : '' , '
+              <span class="imgspan"><b>' , $b['tittel'] , '</b> ';
         foreach($b['tagg'] as $tag) {
             echo '<a href="' . SITEURL . '/tagg/' . $tag . '">'.$tag.'</a>';
         }

@@ -19,16 +19,14 @@ echo '
 	<title>', $tpl_params['site'], $tpl_params['title'] , '</title>
 </head>
 <body>
-	<header>
+	<header id="gheader"><div>
 		<h1><a href="' , SITEURL , '">BHKristiansen</a></h1>
-		<span>
-			<ul class="menylinker">
+		<ul class="menylinker">
 				<li><a href="' . SITEURL . '"' , $action=='side' && $subaction=='' ? ' class="active"' : '' , '>Galleri</a></li>
 				<li><a href="' . SITEURL . '/side/om"' , $action=='side' && $subaction=='om' ? ' class="active"' : '' , '>Om</a></li>
 				<li><a href="' . SITEURL . '/side/kontakt"' , $action=='side' && $subaction=='kontakt' ? ' class="active"' : '' , '>Kontakt</a></li>
-			</ul>
-		</span>
-	</header>
-	<div class="content">';
+		</ul>
+	</div></header>
+	<div class="content" id="gcontent">';
 
 ?>

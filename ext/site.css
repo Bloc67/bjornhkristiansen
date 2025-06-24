@@ -698,7 +698,27 @@ span.imgspan a:not(:last-of-type):after {
   width: 100%;
   height: auto;
 }
-
+#gheader {
+    display: block;
+    background: #000d;
+    padding: 0;
+}
+#gheader > div, #gcontent {
+    max-width: 80rem;
+    margin: 0 auto;
+}
+#gheader > div {
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#gheader > div .menylinker {
+    align-self: center;
+    justify-self: end;
+}
+#gheader > div h1 a {
+    color: #8df;
+}
 
 
 
