@@ -538,7 +538,6 @@ ul.art {
     list-style: none;
 }
 ul.art li img {
-    max-height: 20rem;
 }
 ul.art dl {
     display: grid;
@@ -570,7 +569,70 @@ ul.menylinker li a {
 ul.menylinker li a.active {
   text-decoration: underline;
 }
+img.full {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+img.full, img.thumb {
+    cursor: pointer;
+}
+img.full.showit {
+    width: auto;
+    height: auto;
+    opacity: 1;
+    max-height: 100%;
+}
+ul.art.showit img.thumb,
+ul.art.showit img.full + dl {
+    display: none;
+}
+ul.art.showit img.full.showit + dl {
+    display: grid;
+}
+ul.art.showit {
+    display: block;
+}
 
+ul.art li.machs.nothumb img:after {
+    content: "a";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: red;
+    display: block;
+    z-index: 12;
+}
+
+
+@media screen and (max-width: 1000px) {
+    ul.art li.machs img.thumb {
+        min-width: 0rem;
+        max-width: 100%;
+        width: 100%;
+        max-height: 100%;
+        height: auto;
+    }    
+    ul.art  {
+        flex-wrap: wrap;
+    }    
+    ul.art li {
+        flex-grow: 2;
+    }    
+}
+@media screen and (max-width: 700px) {
+    header {
+        grid-template-columns: 1fr;
+        grid-gap: 0rem;
+    }
+    header > span {
+        justify-self: start;
+        align-self: start;
+        margin-top: 0;
+        font-size: 1.1rem;
+    }    
+}
 ul.art  {
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(16rem,1fr));
@@ -585,7 +647,6 @@ img.thumb {
     width: 100%;
     height: auto;
     object-fit: contain;
-    margin-bottom: 2.5rem;
 }
 #artlist img.full {
     display: none;
