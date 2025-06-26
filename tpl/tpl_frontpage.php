@@ -13,16 +13,15 @@ foreach($tpl_params['machines'] as $id => $b) {
     if(!empty($b['tittel'])) {
         echo '
           <li>
-            ' , !empty($b['jpg']) ? '<span class="thumb" data-target="#b'.$id.'" style="background: url(' . SITEURL . '/ext/jpg'. (file_exists(SITEDIR.'/ext/jpg_thumb/'.$b['jpg']) ? '_thumb' : '') . '/'.$b['jpg'].');">
-              
-            <img id="b'.$id.'" class="full" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />' : '' , '
+            ' , !empty($b['jpg']) ? '<img class="thumb" data-target="#b'.$id.'" src="' . SITEURL . '/ext/jpg'. (file_exists(SITEDIR.'/ext/jpg_thumb/'.$b['jpg']) ? '_thumb' : '') . '/'.$b['jpg'].'" /> ' : '' , '
               <span class="imgspan"><b>' , $b['tittel'] , '</b> ';
         foreach($b['tagg'] as $tag) {
             echo '<a href="' . SITEURL . '/tagg/' . $tag . '">'.$tag.'</a>';
         }
                     
         echo '</span>
-        </div>';
+            <img id="b'.$id.'" class="full" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />
+          </li>';
 
     }
 }

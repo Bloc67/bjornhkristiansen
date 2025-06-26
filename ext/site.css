@@ -696,12 +696,84 @@ span.imgspan a:not(:last-of-type):after {
 #gheader > div .menylinker {
     align-self: center;
     justify-self: end;
+    opacity: 0.5;
 }
 #gheader > div h1 a {
     color: #8df;
 }
 
+body {
+    background: #888;
+}
+#gheader .menylinker li a {
+    font-size: 1rem;
+}
+#gheader h1 {
+    font-size: 1.5rem;
+}
+#works {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(12rem,1fr));
+    grid-gap: 1rem;
+}
+#works li {
+    display: block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+#works li:first-of-type {
+    grid-column: span 2;
+    grid-row: span 3
+}
+#works li:nth-of-type(3),#works li:nth-of-type(5) {
+    grid-column: span 2;
+    grid-row: span 3;
+}
+#works li .thumb {
+    display: block;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0 4px 12px #0008;
+    border: solid 5px #222;
+}
+#works li .imgspan {
+    bottom: 0;
+    top: 1rem;
+    left: 1.5rem;
+    color: #fffa;
+    opacity: 0;
+}
+#works li:hover .imgspan {
+    opacity: 1;
+}
+#works li .imgspan a {
+    color: #afad;
+}
+@media only screen and (max-width: 900px) {
+    #works {
+        columns: 2 0.2rem;
+    }
+}
 
+#works img.full.showit {
+    position: fixed;
+    left: 0;
+    z-index: 99;
+    top: 0;
+    box-shadow: 0 0 30px #000;
+    border: solid 1px #000;
+}
+#works li .imgspan {
+    top: 1rem;
+    left: 1.5rem;
+    color: #fffa;
+    opacity: 0;
+    height: 2rem;
+}
 
 
 
