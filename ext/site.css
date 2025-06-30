@@ -777,6 +777,44 @@ body#gallery {
 
 
 
-
+body#adm {
+    background: #181818;
+    color: #aaa;
+}
+body#adm a {
+   color: #798;
+}
+body#adm header {
+    background: #111;
+    padding: 1rem 2rem;
+}
+body#adm header h1{
+    margin: 0;
+    padding: 0;
+}
+body#adm header h1 , body#adm header span{
+    font-size: 1.5rem;
+    margin: 0;
+}
+body#adm .content h2{
+    font-size: 1.3rem;
+}
+body#adm ul.sitelinks a {
+    background: none;
+    display: inline;
+    padding: 0;
+}
+body#adm ul.sitelinks a:after {
+    content: "|";
+    color: #fff4;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+body#adm ul.sitelinks li:last-of-type a:after {
+    content: "";
+}
+body#adm img.thumb {
+    border: solid 1px #000;
+}
 
 
