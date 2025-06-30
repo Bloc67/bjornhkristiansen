@@ -18,7 +18,7 @@ echo '
 	<link rel="manifest" href="' . SITEURL . '/ext/site.webmanifest">
 	<title>', $tpl_params['site'], $tpl_params['title'] , '</title>
 </head>
-<body>
+<body id="adm">
 	<header>
 		<h1><a href="' , SITEURL , '">Bjorn H Kristiansen</a></h1>
 		<span>' , !empty($tpl_params['h1']) ? $tpl_params['h1'] : '' ,'</span>
