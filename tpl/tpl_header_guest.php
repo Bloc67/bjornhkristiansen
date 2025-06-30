@@ -18,7 +18,7 @@ echo '
 	<link rel="manifest" href="' . SITEURL . '/ext/site.webmanifest">
 	<title>', $tpl_params['site'], $tpl_params['title'] , '</title>
 </head>
-<body>
+<body id="gallery">
 	<header id="gheader"><div>
 		<h1><a href="' , SITEURL , '">BHKristiansen</a></h1>
 		<ul class="menylinker">

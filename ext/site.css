@@ -702,7 +702,7 @@ span.imgspan a:not(:last-of-type):after {
     color: #8df;
 }
 
-body {
+body#gallery {
     background: #888;
 }
 #gheader .menylinker li a {
