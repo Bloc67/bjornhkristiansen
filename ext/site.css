@@ -819,3 +819,92 @@ body#adm img.thumb {
 }
 
 
+#works img.full.showit {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    z-index: 99;
+    top: 0;
+    box-shadow: 0 0 400px 230px #000a;
+    border: solid 1px #000;
+}
+html {
+    font-size: 18px;
+}
+body#gallery {
+    background: #111;
+    color: #aaa;
+    /*font-family: var(--system_ui);*/
+    /*font-family: var(--transitional);*/
+    /*font-family: var(--old_style);/*
+    /*font-family: var(--humanist);*/
+    font-family: var(--geometric_humanist);
+    /*font-family: var(--classical_humanist);*/
+    /*font-family: var(--neo_grotesque);*/
+    /*font-family: var(--monospace_slab_serif);*/
+    /*font-family: var(--monospace_code);*/
+    /*font-family: var(--industrial);*/
+    /*font-family: var(--rounded_sans);*/
+    /*font-family: var(--slab_serif);*/
+    /*font-family: var(--antique);*/
+    /*font-family: var(--didone);*/
+    /*font-family: var(--handwritten);*/
+}
+body#gallery #works li .thumb {
+    box-shadow: 0 4px 12px #0008;
+    border: solid 1px #000;
+}
+body#gallery header {
+    box-shadow: 0 4px 12px #0008;
+    border: solid 1px #000;
+    background: #181818;
+}
+body#gallery .content {
+    overflow: hidden;
+}
+body#gallery .content h2 {
+    font-size: 1.1rem;
+    opacity: 0.5;
+}
+body#gallery header h1 {
+    opacity: 0.5;
+}
+body#gallery footer {
+    padding: 0.5rem 0;
+    border: none;
+    color: #fff8;
+    font-size: 0.9rem;
+}
+body#adm form p.locked, body#adm input, body#adm select, body#adm textarea {
+    font-size: 0.9rem;
+    color: #aaa;
+    background: #222;
+    border: solid 2px #333;
+    padding: 0.3rem 0.4rem;
+}
+html body#adm select {
+    background: #182028;
+}
+body#adm form p.locked {
+    opacity: 0.5;
+}
+body#adm form {
+    grid-template-areas: "forml formr"
+        "submitb submitb";
+    grid-template-columns: 1fr 1fr;
+    border-top: solid 1px #333;
+    padding: 0.5rem 0 0 0;
+    margin-top: 0;
+}
+body#adm form .form-group {
+    max-width: 100%;
+    grid-template-columns: 1fr;
+}
+
+body#adm img.thumb {
+    max-width: 250px;
+    display: block;
+    margin: 0 0 1rem 0;
+}
+
+
