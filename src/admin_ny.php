@@ -22,7 +22,7 @@ if(is_logged_in() && !empty($_SESSION["userlevel"]) && $_SESSION["userlevel"] ==
         'tekst' => '',
         'materialer' => '',
         'aar' => $year,
-        'mnd' => $mnd,
+        'mnd' => $maned,
         'added' => $now,
     );
     $filnavn = $year.$maned.$now;
