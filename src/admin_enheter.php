@@ -25,6 +25,8 @@ if($param1 == 'edit' && !empty($param2)) {
     if(file_exists(SITEDIR.'/json/'.$param2.'.json')) {
         $row = json_decode(file_get_contents(SITEDIR.'/json/'.$param2.'.json'),true);
         $tpl_params['machine'] = $row;
+        $tpl_params['machine']['path'] = $param2;
+
         $tpl_params['h1'] = 'Redigere "' . $row['tittel'] . '"';
         $tpl_params['title'] = ' - Admin';
         
