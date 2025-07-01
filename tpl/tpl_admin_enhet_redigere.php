@@ -40,7 +40,7 @@ else {
     );
     $submit_text = 'Lagre';
     $extra_text = '
-        <input type="hidden" name="machineid" value="'. $tpl_params['machine']['id'] . '">
+        <input type="hidden" name="machineid" value="'. $tpl_params['machine']['path'] . '">
         ';
 
     render_form($target, $elements, $submit_text, $extra_text); 
