@@ -19,7 +19,7 @@ else {
     $tpl_params['machine']['aar'] = !empty($tpl_params['machine']['aar']) ? $tpl_params['machine']['aar'] : '2025';
     $tpl_params['machine']['mnd'] = !empty($tpl_params['machine']['mnd']) ? $tpl_params['machine']['mnd'] : '1';
     // render a form
-    $target = SITEURL . '/admin/enheter/edit/'.$tpl_params['machine']['id'];
+    $target = SITEURL . '/admin/enheter/edit/'.$tpl_params['machine']['path'];
     $elements = array(
         'tittel' => array('type' => 'text', 'label' => 'Tittel', 'err' => $title_err , 'value' => $tpl_params['machine']['tittel']),
         'tagg' => array('type' => 'text', 'label' => 'Tagg', 'err' => $title_err , 'value' => $tpl_params['machine']['tagg'],'choices' => $tpl_params['taggchoices']),
