@@ -26,6 +26,8 @@ else {
             'options' => $status,
         ),
         'jpgimport' => array('type' => 'file', 'label' => 'Bilde', 'err' => $file_err, 'accept' => '.jpg','var' => (!empty($tpl_params['machine']['jpg']) ? $tpl_params['machine']['jpg'] : ''), 'is_img' => 1),
+        'tagg' => array('type' => 'text', 'label' => 'Tagg', 'err' => $title_err , 'value' => $tpl_params['machine']['tagg'],'choices' => $tpl_params['taggchoices']),
+        'added' => array('type' => 'lock', 'label' => 'Lagt til', 'err' => $title_err , 'value' => $tpl_params['machine']['added']),
         'divde2' => array('type' => 'divide'),
         'tekst' => array('type' => 'textarea', 'label' => 'Bakgrunnstekst', 'err' => $title_err , 'value' => $tpl_params['machine']['tekst']),
         'materialer' => array('type' => 'textarea', 'label' => 'Materialer', 'err' => $title_err , 'value' => $tpl_params['machine']['materialer']),
@@ -36,7 +38,6 @@ else {
         'mnd' => array('type' => 'select', 'label' => 'Måned', 'err' => $status_err , 'value' => $tpl_params['machine']['mnd'], 
             'options' => $mnd, 'fifty' => true,
         ),
-        'added' => array('type' => 'lock', 'label' => 'Lagt til', 'err' => $title_err , 'value' => $tpl_params['machine']['added']),
     );
     $submit_text = 'Lagre';
     $extra_text = '
