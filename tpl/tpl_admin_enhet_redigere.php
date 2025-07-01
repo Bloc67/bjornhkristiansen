@@ -26,17 +26,17 @@ else {
         'status' => array('type' => 'select', 'label' => 'Status', 'err' => $status_err , 'value' => $tpl_params['machine']['status'], 
             'options' => $status,
         ),
+        'added' => array('type' => 'lock', 'label' => 'Lagt til', 'err' => $title_err , 'value' => $tpl_params['machine']['added']),
+        'jpgimport' => array('type' => 'file', 'label' => 'Bilde', 'err' => $file_err, 'accept' => '.jpg','var' => (!empty($tpl_params['machine']['jpg']) ? $tpl_params['machine']['jpg'] : ''), 'is_img' => 1),
+        'divde2' => array('type' => 'divide'),
+        'tekst' => array('type' => 'textarea', 'label' => 'Bakgrunnstekst', 'err' => $title_err , 'value' => $tpl_params['machine']['tekst']),
+        'materialer' => array('type' => 'textarea', 'label' => 'Materialer', 'err' => $title_err , 'value' => $tpl_params['machine']['materialer']),
         'aar' => array('type' => 'select', 'label' => 'Årstall', 'err' => $status_err , 'value' => $tpl_params['machine']['aar'], 
             'options' => $aar,'fifty' => true,
         ),
         'mnd' => array('type' => 'select', 'label' => 'Måned', 'err' => $status_err , 'value' => $tpl_params['machine']['mnd'], 
             'options' => $mnd, 'fifty' => true,
         ),
-        'added' => array('type' => 'lock', 'label' => 'Lagt til', 'err' => $title_err , 'value' => $tpl_params['machine']['added']),
-        'jpgimport' => array('type' => 'file', 'label' => 'Bilde', 'err' => $file_err, 'accept' => '.jpg','var' => (!empty($tpl_params['machine']['jpg']) ? $tpl_params['machine']['jpg'] : ''), 'is_img' => 1),
-        'divde2' => array('type' => 'divide'),
-        'tekst' => array('type' => 'textarea', 'label' => 'Bakgrunnstekst', 'err' => $title_err , 'value' => $tpl_params['machine']['tekst']),
-        'materialer' => array('type' => 'textarea', 'label' => 'Materialer', 'err' => $title_err , 'value' => $tpl_params['machine']['materialer']),
     );
     $submit_text = 'Lagre';
     $extra_text = '
