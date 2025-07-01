@@ -53,7 +53,7 @@ if($param1 == 'edit' && !empty($param2)) {
                 }
             }
             // calculate new filename based on date
-            $newdate = $tpl_params['machine']['aar'].$tpl_params['machine']['mnd'].$tpl_params['machine']['added'];
+            $newdate = $tpl_params['machine']['aar'].$tpl_params['machine']['mnd'].$tpl_params['machine']['dag'].$tpl_params['machine']['added'];
             if($newdate != $param2) {
                 unlink(SITEDIR.'/json/'.$param2.'.json');
                 $param2 = $newdate;
