@@ -23,7 +23,7 @@ foreach($tpl_params['machines'] as $id => $b) {
                     <dt>Tagger</dt><dd>' , !empty($b['tagg']) ? strtolower($b['tagg']) : '' , '</dd>
                     <dt>Status</dt><dd>' , !empty($b['status']) ? $tpl_params['status'][$b['status']] : '-aktiv-' , '</dd>
                     <dt>Dato</dt><dd>' , $mnd[$b['mnd']] , ' ' , $b['aar'] , '</dd>
-                    <dt>Added</dt><dd>' , date("Y-m-d H:i",$id), '</dd>
+                    <dt>Added</dt><dd>' , date("Y-m-d H:i",$b['added']), '</dd>
                 </dl>
             </li>';
 }
