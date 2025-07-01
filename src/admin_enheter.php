@@ -18,6 +18,7 @@ $title_err = $serial_err = $pctype_err = $status_err = $healthstate_err = $healt
 $taggfiler = hentjsonfiler('tagg');
 $datofiler = hentjsonfiler('dato');
 $statusfiler = hentjsonfiler('status');
+$reboot = false;
 
 // are we in edit mode?
 if($param1 == 'edit' && !empty($param2)) {
@@ -45,8 +46,12 @@ if($param1 == 'edit' && !empty($param2)) {
                 }
             }
             // calculate new filename based on date
-            $newdate = 
-
+            $newdate = $tpl_params['machine']['aar'].$tpl_params['machine']['mnd'].$tpl_params['machine']['added'];
+            if($newdate != $param2) {
+                unlink(SITEDIR.'/json/'.$param2.'.json');
+                $param2 = $newdate;
+                $reboot = true;
+            }
             // write the new file
             file_put_contents(SITEDIR.'/json/'.$param2.'.json', json_encode($tpl_params['machine']));
 
@@ -57,7 +62,9 @@ if($param1 == 'edit' && !empty($param2)) {
             $datofiler = oppdaterejsonfiler('dato',$datofiler,'aar');
             // update status
             $statusfiler = oppdaterejsonfiler('status',$statusfiler);
-
+            if($reboot) {
+                header("Location: " . SITEURL . "/admin/enheter/edit/".$param2);
+            }
         }
         // get some choices!!
         $tpl_params['taggchoices'] = array();
