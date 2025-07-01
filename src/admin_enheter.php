@@ -20,7 +20,7 @@ $datofiler = hentjsonfiler('dato');
 $statusfiler = hentjsonfiler('status');
 
 // are we in edit mode?
-if($param1 == 'edit' && is_numeric($param2)) {
+if($param1 == 'edit' && !empty($param2)) {
     // fetch the user
     if(file_exists(SITEDIR.'/json/'.$param2.'.json')) {
         $row = json_decode(file_get_contents(SITEDIR.'/json/'.$param2.'.json'),true);
