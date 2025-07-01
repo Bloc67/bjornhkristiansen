@@ -12,7 +12,7 @@ if(is_logged_in() && !empty($_SESSION["userlevel"]) && $_SESSION["userlevel"] ==
     $is_admin = true;
     $now = time();
     $year = date("Y",$now);
-    $mnd = date("m",$now);
+    $maned = date("m",$now);
     // create a file
     $data = array(
         'id' => $now,
@@ -25,7 +25,7 @@ if(is_logged_in() && !empty($_SESSION["userlevel"]) && $_SESSION["userlevel"] ==
         'mnd' => $mnd,
         'added' => $now,
     );
-    $filnavn = $year.$mnd.'-'.$now;
+    $filnavn = $year.$maned.'-'.$now;
     file_put_contents(SITEDIR.'/json/'.$filnavn.'.json', json_encode($data));
 	header("location: ". SITEURL ."/enheter/edit/".$filnavn);
 }
