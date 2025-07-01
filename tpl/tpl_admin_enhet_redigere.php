@@ -22,8 +22,8 @@ else {
     $target = SITEURL . '/admin/enheter/edit/'.$tpl_params['machine']['id'];
     $elements = array(
         'tittel' => array('type' => 'text', 'label' => 'Tittel', 'err' => $title_err , 'value' => $tpl_params['machine']['tittel']),
-        'tekst' => array('type' => 'text', 'label' => 'Bakgrunnstekst', 'err' => $title_err , 'value' => $tpl_params['machine']['tekst']),
-        'materialer' => array('type' => 'text', 'label' => 'Materialer', 'err' => $title_err , 'value' => $tpl_params['machine']['materialer']),
+        'tekst' => array('type' => 'textarea', 'label' => 'Bakgrunnstekst', 'err' => $title_err , 'value' => $tpl_params['machine']['tekst']),
+        'materialer' => array('type' => 'textarea', 'label' => 'Materialer', 'err' => $title_err , 'value' => $tpl_params['machine']['materialer']),
         'tagg' => array('type' => 'text', 'label' => 'Tagg', 'err' => $title_err , 'value' => $tpl_params['machine']['tagg'],'choices' => $tpl_params['taggchoices']),
         'status' => array('type' => 'select', 'label' => 'Status', 'err' => $status_err , 'value' => $tpl_params['machine']['status'], 
             'options' => $status,
