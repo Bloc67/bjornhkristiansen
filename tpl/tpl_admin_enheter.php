@@ -22,7 +22,7 @@ foreach($tpl_params['machines'] as $id => $b) {
                     <dt>Slette</dt><dd><a onclick="return confirm(\'Er du sikker på du vil slette enhet ' . $b['id'] . ' (' . $b['tittel'] . '?\');" href="' . SITEURL . '/admin/enheter/slette/'. $b['id'] .'">bilde</a></dd>
                     <dt>Tagger</dt><dd>' , !empty($b['tagg']) ? strtolower($b['tagg']) : '' , '</dd>
                     <dt>Status</dt><dd>' , !empty($b['status']) ? $tpl_params['status'][$b['status']] : '-aktiv-' , '</dd>
-                    <dt>Dato</dt><dd>' , $mnd[$b['mnd']] , ' ' , $b['year'] , '</dd>
+                    <dt>Dato</dt><dd>' , $mnd[$b['mnd']] , ' ' , $b['aar'] , '</dd>
                     <dt>Lagt til</dt><dd>' , date("Y-m-d H:i",$id), '</dd>
                 </dl>
             </li>';
