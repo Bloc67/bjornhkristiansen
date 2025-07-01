@@ -25,7 +25,7 @@ if(is_logged_in() && !empty($_SESSION["userlevel"]) && $_SESSION["userlevel"] ==
         'mnd' => $mnd,
         'added' => $now,
     );
-    $filnavn = $year.$maned.'-'.$now;
+    $filnavn = $year.$maned.$now;
     file_put_contents(SITEDIR.'/json/'.$filnavn.'.json', json_encode($data));
 	header("location: ". SITEURL ."/enheter/edit/".$filnavn);
 }
