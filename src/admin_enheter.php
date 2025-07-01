@@ -43,6 +43,13 @@ if($param1 == 'edit' && !empty($param2)) {
                 if (move_uploaded_file($sourcePath, $targetPath)) {
                     // update the pre-existing with new pdf
                     $tpl_params['machine']['jpg'] = $_FILES['jpgimport']['name'];
+                    // trigger dates too
+                    // check
+                    if(strtoupper(substr($tpl_params['machine']['jpg'],0,6)) == 'IMG_20') {
+                        $tpl_params['machine']['aar'] = substr($tpl_params['machine']['jpg'],4,4);
+                        $tpl_params['machine']['mnd'] = substr($tpl_params['machine']['jpg'],8,2);
+                        $tpl_params['machine']['dag'] = substr($tpl_params['machine']['jpg'],10,2);
+                    }
                 }
             }
             // calculate new filename based on date
