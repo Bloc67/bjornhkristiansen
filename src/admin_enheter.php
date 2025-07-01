@@ -30,7 +30,7 @@ if($param1 == 'edit' && is_numeric($param2)) {
         
         // Processing form data when form is submitted
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            foreach(array('tittel','status','tagg','aar','mnd') as $e) {
+            foreach(array('tittel','status','tagg','aar','mnd','tekst','materialer') as $e) {
                 $tpl_params['machine'][$e] = isset($_POST[$e]) ? $_POST[$e] : $tpl_params['machine'][$e]; 
             }
             if (is_uploaded_file($_FILES['jpgimport']['tmp_name'])) {
