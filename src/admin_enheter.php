@@ -30,7 +30,7 @@ if($param1 == 'edit' && is_numeric($param2)) {
         
         // Processing form data when form is submitted
         if($_SERVER["REQUEST_METHOD"] == "POST"){
-            foreach(array('tittel','status','tagg','aar','mnd','tekst','materialer') as $e) {
+            foreach(array('tittel','status','tagg','aar','mnd','tekst','materialer','added') as $e) {
                 $tpl_params['machine'][$e] = isset($_POST[$e]) ? $_POST[$e] : $tpl_params['machine'][$e]; 
             }
             if (is_uploaded_file($_FILES['jpgimport']['tmp_name'])) {
@@ -42,6 +42,9 @@ if($param1 == 'edit' && is_numeric($param2)) {
                     $tpl_params['machine']['jpg'] = $_FILES['jpgimport']['name'];
                 }
             }
+            // calculate new filename based on date
+            $newdate = 
+
             // write the new file
             file_put_contents(SITEDIR.'/json/'.$param2.'.json', json_encode($tpl_params['machine']));
 
