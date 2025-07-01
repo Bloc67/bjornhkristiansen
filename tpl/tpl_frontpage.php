@@ -21,9 +21,9 @@ foreach($tpl_params['machines'] as $id => $b) {
                     
         echo '</span>
             <img id="b'.$id.'" class="full" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />
-            <p>
+            <div>
               ' , $b['tekst'] , '<hr class="soft">' , $b['materialer'] , '
-            </p>
+            </div>
           </li>';
 
     }
