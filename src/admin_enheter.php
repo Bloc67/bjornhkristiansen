@@ -95,7 +95,7 @@ else {
       // a file or a dir
       if($tfile->isFile()) {
         $row = json_decode(file_get_contents(SITEDIR.'/json/'.$tfile),true);
-        $tpl_params['machines'][$row['id']] = $row;
+        $tpl_params['machines'][$tfile] = $row;
       }
     }    
     
