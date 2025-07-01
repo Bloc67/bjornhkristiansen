@@ -1,4 +1,4 @@
-html {box-sizing: border-box; font-size: 16px;}
+html {box-sizing: border-box; }
 *, *:before, *:after { box-sizing: inherit; }
 body, p, ol, ul { margin: 0; padding: 0; font-weight: normal; }
 img { max-width: 100%; height: auto; }
@@ -25,6 +25,7 @@ img { max-width: 100%; height: auto; }
 body {
   font-family: var(--system_ui);
   font-size: 1.05rem;
+  font-size: 16px;
   line-height: 1.45rem;
   padding: 0;
   margin: 0;
