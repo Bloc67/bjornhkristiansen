@@ -11,6 +11,8 @@ if(is_logged_in() && !empty($_SESSION["userlevel"]) && $_SESSION["userlevel"] ==
     // we are admin
     $is_admin = true;
     $now = time();
+    $year = date("Y",$now);
+    $mnd = date("m",$now);
     // create a file
     $data = array(
         'id' => $now,
@@ -19,12 +21,13 @@ if(is_logged_in() && !empty($_SESSION["userlevel"]) && $_SESSION["userlevel"] ==
         'status' => 0,
         'tekst' => '',
         'materialer' => '',
-        'aar' => date("Y",$now),
-        'mnd' => date("n",$now),
+        'aar' => $year,
+        'mnd' => $mnd,
         'added' => $now,
     );
-    file_put_contents(SITEDIR.'/json/'.$now.'.json', json_encode($data));
-	header("location: ". SITEURL ."/enheter/edit/".$now);
+    $filnavn = $year.$mnd.'-'.$now;
+    file_put_contents(SITEDIR.'/json/'.$filnavn.'.json', json_encode($data));
+	header("location: ". SITEURL ."/enheter/edit/".$filnavn);
 }
 else {
 	header("location: ". SITEURL ."/login");
