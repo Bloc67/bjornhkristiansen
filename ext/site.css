@@ -906,5 +906,11 @@ body#adm img.thumb {
     display: block;
     margin: 0 0 1rem 0;
 }
-
+#works {
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+}
+#works li {
+    display: grid;
+    grid-template-columns: 1fr 2rem 1fr;
+}
 
