@@ -686,7 +686,7 @@ span.imgspan a:not(:last-of-type):after {
     padding: 0;
 }
 #gheader > div, #gcontent {
-    max-width: 80rem;
+    max-width: 70rem;
     margin: 0 auto;
 }
 #gheader > div {
@@ -915,4 +915,19 @@ body#adm img.thumb {
 }
 
 
-
+#works {
+    display: block;
+    columns: 2 4rem;
+}
+#works li {
+    padding: 0 2rem 1rem 0;
+}
+@media only screen and (max-width: 900px) {
+    #works {
+        columns: 1;
+    }
+}
+hr.soft {
+    opacity: 0.2;
+}
+ 

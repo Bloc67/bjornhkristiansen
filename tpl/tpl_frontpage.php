@@ -14,15 +14,15 @@ foreach($tpl_params['machines'] as $id => $b) {
         echo '
           <li>
             ' , !empty($b['jpg']) ? '<img class="thumb" data-target="#b'.$id.'" src="' . SITEURL . '/ext/jpg'. (file_exists(SITEDIR.'/ext/jpg_thumb/'.$b['jpg']) ? '_thumb' : '') . '/'.$b['jpg'].'" /> ' : '' , '
-              <span class="imgspan"><b>' , $b['tittel'] , '</b> ';
-        foreach($b['tagg'] as $tag) {
-            echo '<a href="' . SITEURL . '/tagg/' . $tag . '">'.$tag.'</a>';
-        }
-                    
-        echo '</span>
             <img id="b'.$id.'" class="full" src="' . SITEURL . '/ext/jpg/'.$b['jpg'].'" alt="" />
             <div>
-              ' , $b['tekst'] , '<hr class="soft">' , $b['materialer'] , '
+              <h3>' , $b['tittel'] , '</h3>
+              <p>';
+
+        foreach($b['tagg'] as $tag) {
+            echo '<a href="' . SITEURL . '/tagg/' . $tag . '">'.$tag.'</a> ';
+        }
+        echo '</p>', $b['tekst'] , '<hr class="soft">' , $b['materialer'] , '
             </div>
           </li>';
 
