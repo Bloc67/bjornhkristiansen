@@ -6,12 +6,12 @@ if (!defined('APG'))
 
 if($subaction == 'om') {
     echo '
-    Om
+    Autodidakt amatørmaler fra Fredrikstad, bodd i Molde siden 1998. 
     ';
 }
 elseif($subaction == 'kontakt') {
     echo '
-    Kontakt
+    Henvendelser via <a href="mailto:post@bhkristiansen.com">epost</a> eller <a href="https://www.facebook.com/bjoernhkristiansen/">Facebook</a>. 
     ';
 }
 else {
