@@ -29,7 +29,7 @@ if(is_logged_in() && !empty($_SESSION["userlevel"]) && $_SESSION["userlevel"] ==
     );
     $filnavn = $year.$maned.$dag.$now;
     file_put_contents(SITEDIR.'/json/'.$filnavn.'.json', json_encode($data));
-	header("location: ". SITEURL ."/enheter/edit/".$filnavn);
+	header("location: ". SITEURL ."/admin/enheter/edit/".$filnavn);
 }
 else {
 	header("location: ". SITEURL ."/login");
