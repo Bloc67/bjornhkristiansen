@@ -34,7 +34,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($username_err) && empty($password_err)){
         $param_username = $username;
-        if($password == 'Litestep1967forever') {
+        if($password == '3510') {
             // Password is correct, so start a new session
             if(!isset($_SESSION)) {
                 session_start();
