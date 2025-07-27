@@ -8,7 +8,7 @@ echo '
     <section>
         <h2>' , $tpl_params['title'] ,'</h2>
         <ul id="works">';
-$y = date("Y",time());
+$y = 0;
 foreach($tpl_params['machines'] as $id => $b) {
     if(!empty($b['tittel'])) {
         if($y!=$b['aar']) {
