@@ -107,7 +107,7 @@ else {
                     if(!empty($row['status'])) {
 
                         if(!empty($row['jpg']))
-                            $tpl_params['machines'][$row['id']] = $row;
+                            $tpl_params['machines'][$row['path']] = $row;
                         else
                             $tpl_params['machines'][$row['id']] = array();
             
@@ -115,7 +115,7 @@ else {
                     }
                 }
             }    
-            ksort($tpl_params['machines']);
+            krsort($tpl_params['machines']);
             $tpl_params['h1'] = 'Enheter';
             $tpl_params['title'] = 'Siste fra Galleriet';
             $tpl_params['admin_top_content'] = '
