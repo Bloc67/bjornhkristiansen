@@ -911,3 +911,13 @@ hr.soft {
     opacity: 0.2;
 }
  
+#works {
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+}
+#works li.divy {
+    grid-column: 1 / -1;
+    padding: 0;
+}
+#works li.divy h3 {
+    margin: 0;
+}
