@@ -115,7 +115,7 @@ else {
                     }
                 }
             }    
-            krsort($tpl_params['machines']);
+            ksort($tpl_params['machines']);
             $tpl_params['h1'] = 'Enheter';
             $tpl_params['title'] = 'Siste fra Galleriet';
             $tpl_params['admin_top_content'] = '
