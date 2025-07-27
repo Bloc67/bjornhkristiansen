@@ -109,9 +109,9 @@ else {
                         if(!empty($row['jpg']))
                             $tpl_params['machines'][$tid] = $row;
                         else
-                            $tpl_params['machines'][$row['id']] = array();
+                            $tpl_params['machines'][$tid] = array();
             
-                        $tpl_params['machines'][$row['id']]['tagg'] = !empty($tpl_params['machines'][$row['id']]['tagg']) ? explode(",",$tpl_params['machines'][$row['id']]['tagg']) : array();   
+                        $tpl_params['machines'][$tid]['tagg'] = !empty($tpl_params['machines'][$tid]['tagg']) ? explode(",",$tpl_params['machines'][$tid]['tagg']) : array();   
                     }
                 }
             }    
