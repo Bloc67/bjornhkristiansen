@@ -91,6 +91,7 @@ else {
 
         }
         else {
+            $tpl_params['machines'] = array();
             // just guest frontpage
             foreach (new DirectoryIterator(SITEDIR.'/json/') as $tfile) {
                 if ($tfile->isDot()) continue;
@@ -103,11 +104,15 @@ else {
                     $row = json_decode(file_get_contents(SITEDIR.'/json/'.$tfile),true);
                     $row['aar'] = !empty($row['aar']) ? $row['aar'] : '0';
                     $row['jpg'] = !empty($row['jpg']) ? $row['jpg'] : '';
-                    if(!empty($row['jpg']))
-                        $tpl_params['machines'][$row['id']] = $row;
-                    else
-                        $tpl_params['machines'][$row['id']] = array();
-                    $tpl_params['machines'][$row['id']]['tagg'] = !empty($tpl_params['machines'][$row['id']]['tagg']) ? explode(",",$tpl_params['machines'][$row['id']]['tagg']) : array();   
+                    if(!empty($row['status'])) {
+
+                        if(!empty($row['jpg']))
+                            $tpl_params['machines'][$row['id']] = $row;
+                        else
+                            $tpl_params['machines'][$row['id']] = array();
+            
+                        $tpl_params['machines'][$row['id']]['tagg'] = !empty($tpl_params['machines'][$row['id']]['tagg']) ? explode(",",$tpl_params['machines'][$row['id']]['tagg']) : array();   
+                    }
                 }
             }    
             krsort($tpl_params['machines']);
