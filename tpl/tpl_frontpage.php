@@ -14,7 +14,7 @@ foreach($tpl_params['machines'] as $id => $b) {
         if($y!=$b['aar']) {
           echo '
           <li class="divy"><h3>' , $b['aar'] , '</h3></li>';
-          $y==$b['aar'];
+          $y = $b['aar'];
         }
 
         echo '
