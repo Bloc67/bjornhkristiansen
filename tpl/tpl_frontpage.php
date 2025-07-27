@@ -8,9 +8,15 @@ echo '
     <section>
         <h2>' , $tpl_params['title'] ,'</h2>
         <ul id="works">';
-
+$y = date("Y",time());
 foreach($tpl_params['machines'] as $id => $b) {
     if(!empty($b['tittel'])) {
+        if($y!=$b['aar']) {
+          echo '
+          <li class="divy"><h3>' , $b['aar'] , '</h3></li>';
+          $y==$b['aar'];
+        }
+
         echo '
           <li>
             ' , !empty($b['jpg']) ? '<img class="thumb" data-target="#b'.$id.'" src="' . SITEURL . '/ext/jpg'. (file_exists(SITEDIR.'/ext/jpg_thumb/'.$b['jpg']) ? '_thumb' : '') . '/'.$b['jpg'].'" /> ' : '' , '
