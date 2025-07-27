@@ -923,9 +923,6 @@ body#adm img.thumb {
     padding: 0 2rem 1rem 0;
 }
 @media only screen and (max-width: 900px) {
-    #works {
-        columns: 1;
-    }
 }
 hr.soft {
     opacity: 0.2;
