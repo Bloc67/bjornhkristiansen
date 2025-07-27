@@ -726,14 +726,6 @@ body#gallery {
     margin: 0;
     padding: 0;
 }
-#works li:first-of-type {
-    grid-column: span 2;
-    grid-row: span 3
-}
-#works li:nth-of-type(3),#works li:nth-of-type(5) {
-    grid-column: span 2;
-    grid-row: span 3;
-}
 #works li .thumb {
     display: block;
     margin: 0;
@@ -753,11 +745,6 @@ body#gallery {
 }
 #works li .imgspan a {
     color: #afad;
-}
-@media only screen and (max-width: 900px) {
-    #works {
-        columns: 2 0.2rem;
-    }
 }
 
 #works img.full.showit {
