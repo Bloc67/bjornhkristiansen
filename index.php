@@ -105,7 +105,7 @@ else {
                     $row['aar'] = !empty($row['aar']) ? $row['aar'] : '0';
                     $row['jpg'] = !empty($row['jpg']) ? $row['jpg'] : '';
                     if(!empty($row['status'])) {
-                        $tid = intval(substr($u,strlen($u)-5)); 
+                        $tid = mktime(substr($u,8,2),substr($u,10,2),substr($u,12,2),substr($u,4,2),substr($u,6,2),substr($u,0,4)); 
                         if(!empty($row['jpg']))
                             $tpl_params['machines'][$tid] = $row;
                         else
