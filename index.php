@@ -105,9 +105,9 @@ else {
                     $row['aar'] = !empty($row['aar']) ? $row['aar'] : '0';
                     $row['jpg'] = !empty($row['jpg']) ? $row['jpg'] : '';
                     if(!empty($row['status'])) {
-
+                        $tid = substr($u,strlen($u)-5); 
                         if(!empty($row['jpg']))
-                            $tpl_params['machines'][$row['path']] = $row;
+                            $tpl_params['machines'][$tid] = $row;
                         else
                             $tpl_params['machines'][$row['id']] = array();
             
