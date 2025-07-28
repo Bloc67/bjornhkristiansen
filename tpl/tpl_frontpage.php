@@ -8,6 +8,7 @@ echo '
     <section>
         <h2>' , $tpl_params['title'] ,'</h2>
         <ul id="nav">';
+$y = 0;
 foreach($tpl_params['machines'] as $id => $b) {
     if(!empty($b['tittel'])) {
         if($y!=$b['aar']) {
