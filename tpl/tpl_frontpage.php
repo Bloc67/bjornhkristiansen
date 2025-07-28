@@ -7,6 +7,19 @@ if (!defined('APG'))
 echo '
     <section>
         <h2>' , $tpl_params['title'] ,'</h2>
+        <ul id="nav">';
+foreach($tpl_params['machines'] as $id => $b) {
+    if(!empty($b['tittel'])) {
+        if($y!=$b['aar']) {
+          echo '
+          <li><a href="#y'.$b['aar'].'">' , $b['aar'] , '</a></li>';
+          $y = $b['aar'];
+        }
+    }
+}
+
+echo '
+        </ul>
         <ul id="works">';
 $y = 0;
 foreach($tpl_params['machines'] as $id => $b) {
