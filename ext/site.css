@@ -93,9 +93,6 @@ ul.list li ul {
   grid-gap: 1rem 0;
   grid-template-columns: 15rem 1fr 15rem 14rem 15rem;
 }
-ul.list.machines li ul {
-/*  grid-template-columns: 7rem 8rem 4rem 1fr 3rem 4rem 1fr 6rem 10rem 10rem 5rem 20rem;*/
-}
 
 ul.list li ul li {
   padding: 0.4rem 1rem;
@@ -538,8 +535,6 @@ ul.art {
     margin: 0;
     list-style: none;
 }
-ul.art li img {
-}
 ul.art dl {
     display: grid;
     grid-template-columns: 3rem 1fr;
@@ -671,9 +666,6 @@ span.imgspan {
     z-index: 2;
     
     white-space: nowrap;
-}
-span.imgspan a {
-  
 }
 span.imgspan a:not(:last-of-type):after {
     content: ", ";
