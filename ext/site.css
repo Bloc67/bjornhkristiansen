@@ -669,9 +669,7 @@ span.imgspan {
 }
 span.imgspan a:not(:last-of-type):after {
     content: ", ";
-    
 }
-
 #gheader {
     display: block;
     background: #000d;
