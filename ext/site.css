@@ -921,3 +921,11 @@ hr.soft {
 #works li.divy h3 {
     margin: 0;
 }
+
+#nav {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    float: right;
+    clear: right;
+}
