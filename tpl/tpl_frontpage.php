@@ -13,7 +13,7 @@ foreach($tpl_params['machines'] as $id => $b) {
     if(!empty($b['tittel'])) {
         if($y!=$b['aar']) {
           echo '
-          <li class="divy"><h3>' , $b['aar'] , '</h3></li>';
+          <li class="divy"><h3 id="y'.$b['aar'].'">' , $b['aar'] , '</h3></li>';
           $y = $b['aar'];
         }
 
