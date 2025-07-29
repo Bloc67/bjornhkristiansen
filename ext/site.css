@@ -919,3 +919,19 @@ hr.soft {
     float: right;
     clear: right;
 }
+
+#works li {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+#works {
+    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+}
+#nav {
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    float: none;
+    clear: both;
+    margin: -0.5rem 0 1rem 0;
+}
